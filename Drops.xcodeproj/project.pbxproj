@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		550D059B1C1685B900AB88DB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550D059A1C1685B900AB88DB /* Accounts.framework */; };
 		550D059D1C1685C100AB88DB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550D059C1C1685C100AB88DB /* Social.framework */; };
+		550D05A01C169C9000AB88DB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D059F1C169C9000AB88DB /* LoginViewController.swift */; };
+		550D05A31C169E7B00AB88DB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D05A21C169E7B00AB88DB /* RegisterViewController.swift */; };
+		552DDC6F1C169F9B004D609B /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DDC6E1C169F9B004D609B /* ForgotPasswordViewController.swift */; };
 		55F7E2651C14D64C00B8A36A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7E2641C14D64C00B8A36A /* AppDelegate.swift */; };
-		55F7E2671C14D64C00B8A36A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7E2661C14D64C00B8A36A /* ViewController.swift */; };
+		55F7E2671C14D64C00B8A36A /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7E2661C14D64C00B8A36A /* UpdateViewController.swift */; };
 		55F7E26A1C14D64C00B8A36A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F7E2681C14D64C00B8A36A /* Main.storyboard */; };
 		55F7E26C1C14D64C00B8A36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55F7E26B1C14D64C00B8A36A /* Assets.xcassets */; };
 		55F7E26F1C14D64C00B8A36A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F7E26D1C14D64C00B8A36A /* LaunchScreen.storyboard */; };
@@ -54,9 +57,12 @@
 /* Begin PBXFileReference section */
 		550D059A1C1685B900AB88DB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		550D059C1C1685C100AB88DB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		550D059F1C169C9000AB88DB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		550D05A21C169E7B00AB88DB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		552DDC6E1C169F9B004D609B /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		55F7E2611C14D64C00B8A36A /* Drops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F7E2641C14D64C00B8A36A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		55F7E2661C14D64C00B8A36A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		55F7E2661C14D64C00B8A36A /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 		55F7E2691C14D64C00B8A36A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55F7E26B1C14D64C00B8A36A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55F7E26E1C14D64C00B8A36A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,6 +134,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		550D059E1C16891700AB88DB /* Home Screen */ = {
+			isa = PBXGroup;
+			children = (
+				55F7E2661C14D64C00B8A36A /* UpdateViewController.swift */,
+			);
+			name = "Home Screen";
+			sourceTree = "<group>";
+		};
+		550D05A11C169C9500AB88DB /* Login Screen */ = {
+			isa = PBXGroup;
+			children = (
+				550D059F1C169C9000AB88DB /* LoginViewController.swift */,
+			);
+			name = "Login Screen";
+			sourceTree = "<group>";
+		};
+		550D05A41C169E8300AB88DB /* Register Screen */ = {
+			isa = PBXGroup;
+			children = (
+				550D05A21C169E7B00AB88DB /* RegisterViewController.swift */,
+			);
+			name = "Register Screen";
+			sourceTree = "<group>";
+		};
+		552DDC701C169FA2004D609B /* Forgot Password Screen */ = {
+			isa = PBXGroup;
+			children = (
+				552DDC6E1C169F9B004D609B /* ForgotPasswordViewController.swift */,
+			);
+			name = "Forgot Password Screen";
+			sourceTree = "<group>";
+		};
 		55F7E2581C14D64C00B8A36A = {
 			isa = PBXGroup;
 			children = (
@@ -153,8 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				55F7E2641C14D64C00B8A36A /* AppDelegate.swift */,
-				55F7E2661C14D64C00B8A36A /* ViewController.swift */,
 				55F7E2681C14D64C00B8A36A /* Main.storyboard */,
+				550D059E1C16891700AB88DB /* Home Screen */,
+				550D05A11C169C9500AB88DB /* Login Screen */,
+				550D05A41C169E8300AB88DB /* Register Screen */,
+				552DDC701C169FA2004D609B /* Forgot Password Screen */,
 				55F7E26B1C14D64C00B8A36A /* Assets.xcassets */,
 				55F7E26D1C14D64C00B8A36A /* LaunchScreen.storyboard */,
 				55F7E2701C14D64C00B8A36A /* Info.plist */,
@@ -336,8 +377,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55F7E2671C14D64C00B8A36A /* ViewController.swift in Sources */,
+				550D05A01C169C9000AB88DB /* LoginViewController.swift in Sources */,
+				552DDC6F1C169F9B004D609B /* ForgotPasswordViewController.swift in Sources */,
+				55F7E2671C14D64C00B8A36A /* UpdateViewController.swift in Sources */,
 				55F7E2651C14D64C00B8A36A /* AppDelegate.swift in Sources */,
+				550D05A31C169E7B00AB88DB /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
