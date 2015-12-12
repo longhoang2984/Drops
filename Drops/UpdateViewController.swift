@@ -22,9 +22,9 @@ class UpdateViewController: UIViewController {
         } else {
             // Show the login screen
             print("User not logged in, send to login screen")
-            dispatch_async(dispatch_get_main_queue()){
-                self.performSegueWithIdentifier("LoginSegueIdentifier", sender: self)
-            }
+//            dispatch_async(dispatch_get_main_queue()){
+//                self.performSegueWithIdentifier("LoginSegueIdentifier", sender: self)
+//            }
         }
         
         }
