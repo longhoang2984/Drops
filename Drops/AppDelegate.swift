@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // https://parse.com/docs/ios_guide#localdatastore/iOS
         Parse.enableLocalDatastore()
         
+        // register PFObject subclasses
+        Message.initialize()
+        WeatherUpdate.initialize()
+        
         // Initialize Parse.
         Parse.setApplicationId("PPAaKUiVC9PRNI0yuIJekvCAPspmZcBujukOeTyO",
         clientKey: "nq1O4wimqHKiaGy4WAtKjgMhyaoKKZIlLelrTstZ")

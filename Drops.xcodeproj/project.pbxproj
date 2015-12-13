@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550A54221C1D454F00B33DD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A54211C1D454F00B33DD1 /* Message.swift */; };
+		550A54241C1D4E2A00B33DD1 /* WeatherUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A54231C1D4E2A00B33DD1 /* WeatherUpdate.swift */; };
+		550A54261C1D5B6D00B33DD1 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A54251C1D5B6D00B33DD1 /* Global.swift */; };
 		550D059B1C1685B900AB88DB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550D059A1C1685B900AB88DB /* Accounts.framework */; };
 		550D059D1C1685C100AB88DB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550D059C1C1685C100AB88DB /* Social.framework */; };
 		550D05A01C169C9000AB88DB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D059F1C169C9000AB88DB /* LoginViewController.swift */; };
 		550D05A31C169E7B00AB88DB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D05A21C169E7B00AB88DB /* RegisterViewController.swift */; };
 		552DDC6F1C169F9B004D609B /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DDC6E1C169F9B004D609B /* ForgotPasswordViewController.swift */; };
 		55C4CB3A1C1BA6A400940390 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4CB391C1BA6A400940390 /* User.swift */; };
-		55C4CB3D1C1BAA9400940390 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4CB3C1C1BAA9400940390 /* Message.swift */; };
 		55F7E2651C14D64C00B8A36A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7E2641C14D64C00B8A36A /* AppDelegate.swift */; };
 		55F7E2671C14D64C00B8A36A /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7E2661C14D64C00B8A36A /* UpdateViewController.swift */; };
 		55F7E26A1C14D64C00B8A36A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F7E2681C14D64C00B8A36A /* Main.storyboard */; };
@@ -57,13 +59,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		550A54211C1D454F00B33DD1 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		550A54231C1D4E2A00B33DD1 /* WeatherUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUpdate.swift; sourceTree = "<group>"; };
+		550A54251C1D5B6D00B33DD1 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		550D059A1C1685B900AB88DB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		550D059C1C1685C100AB88DB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		550D059F1C169C9000AB88DB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		550D05A21C169E7B00AB88DB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		552DDC6E1C169F9B004D609B /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		55C4CB391C1BA6A400940390 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		55C4CB3C1C1BAA9400940390 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		55F7E2611C14D64C00B8A36A /* Drops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F7E2641C14D64C00B8A36A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55F7E2661C14D64C00B8A36A /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
@@ -174,7 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				55C4CB391C1BA6A400940390 /* User.swift */,
-				55C4CB3C1C1BAA9400940390 /* Message.swift */,
+				550A54211C1D454F00B33DD1 /* Message.swift */,
+				550A54231C1D4E2A00B33DD1 /* WeatherUpdate.swift */,
+				550A54251C1D5B6D00B33DD1 /* Global.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -393,11 +399,13 @@
 			files = (
 				550D05A01C169C9000AB88DB /* LoginViewController.swift in Sources */,
 				552DDC6F1C169F9B004D609B /* ForgotPasswordViewController.swift in Sources */,
+				550A54241C1D4E2A00B33DD1 /* WeatherUpdate.swift in Sources */,
 				55C4CB3A1C1BA6A400940390 /* User.swift in Sources */,
 				55F7E2671C14D64C00B8A36A /* UpdateViewController.swift in Sources */,
 				55F7E2651C14D64C00B8A36A /* AppDelegate.swift in Sources */,
 				550D05A31C169E7B00AB88DB /* RegisterViewController.swift in Sources */,
-				55C4CB3D1C1BAA9400940390 /* Message.swift in Sources */,
+				550A54221C1D454F00B33DD1 /* Message.swift in Sources */,
+				550A54261C1D5B6D00B33DD1 /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
