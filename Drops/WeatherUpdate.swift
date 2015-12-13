@@ -12,8 +12,15 @@ import Parse
 public class WeatherUpdate: PFObject, PFSubclassing {
     
     // MARK: - Public API
-    @NSManaged public var user: PFUser // must use PFUser
-    @NSManaged public var currentWeather: Int
+    @NSManaged public var author: PFUser // must use PFUser
+    @NSManaged public var weatherValue: Int
+    
+    // MARK: - Create new weatherUpdate
+    init(author: PFUser, weatherValue: Int) {
+        super.init()
+        self.author = author
+        self.weatherValue = weatherValue
+    }
     
     // MARK: - PFSubclassing
     override public class func initialize() {
