@@ -27,7 +27,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        usernameTextField.becomeFirstResponder()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +51,7 @@ class RegisterViewController: UIViewController {
         if authorization == .Authorized {
             let controller = ImagePickerSheetController()
             
-            controller.addAction(ImageAction(title: NSLocalizedString("Take Photo or Video", comment: "ActionTitle"),
+            controller.addAction(ImageAction(title: NSLocalizedString("Take a Photo", comment: "ActionTitle"),
                 secondaryTitle: NSLocalizedString("Use this one", comment: "Action Title"),
                 handler: { (_) -> () in
                     
@@ -72,8 +72,6 @@ class RegisterViewController: UIViewController {
     
     func presentCamera()
     {
-        // CHALLENGE: present normla image picker controller
-        //              update the postImage + postImageView
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
         imagePicker.delegate = self
@@ -87,12 +85,22 @@ class RegisterViewController: UIViewController {
             print("no profile image")
         } else {
             let username = usernameTextField.text!
-            let newUser = User(username: username, password: password, email: email, image: profileImage)
+            let password = passwordTextField.text!
+            let email = emailTextField.text!
+            let profileText = userProfileTextField.text!
+            
+            let newUser = User(username: username, password: password, email: email, image: profileImage, profileText: profileText)
             newUser.signUpInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     self.dismissViewControllerAnimated(true, completion: nil)
+                    print("register success!")
                 } else {
                     print("\(error?.localizedDescription)")
+                    print(username)
+                    print(self.password)
+                    print(self.email)
+                    print(self.profileImage)
+                    print(profileText)
                 }
             })
         }
@@ -100,7 +108,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func backButtonClicked()
     {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: {});
     }
 
 }

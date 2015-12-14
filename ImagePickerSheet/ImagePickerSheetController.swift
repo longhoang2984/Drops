@@ -71,7 +71,7 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
     }
 
     required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         initialize()
     }
     
@@ -257,7 +257,7 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
             reloadButtonTitles()
         }
         
-        for (section, sectionView) in supplementaryViews {
+        for (_, sectionView) in supplementaryViews {
             if sectionView.selected {
                 sectionView.selected = false
             }

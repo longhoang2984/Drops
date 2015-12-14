@@ -15,6 +15,8 @@ class UpdateViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // PFUser.logOut()
+        
         // Check to see if a user is logged in
         let currentUser = PFUser.currentUser()
         if currentUser != nil {

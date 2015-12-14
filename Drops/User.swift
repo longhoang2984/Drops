@@ -19,6 +19,18 @@ public class User: PFUser {
     @NSManaged public var weatherUpdates: [String]!
     
     // Create new user
+    init(username: String, password: String, email: String, image: UIImage, profileText: String)
+    {
+        super.init()
+        
+        let imageFile = createFileFrom(image)
+        
+        self.profileImageFile = imageFile
+        self.username = username
+        self.email = email
+        self.password = password
+        self.profileText = profileText
+    }
     
     
     // MARK: - PFSubclassing
