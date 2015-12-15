@@ -70,8 +70,8 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
         initialize()
     }
 
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         initialize()
     }
     
