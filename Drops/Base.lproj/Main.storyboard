@@ -8,7 +8,7 @@
         <!--Settings-->
         <scene sceneID="Mtt-tx-dDu">
             <objects>
-                <viewController id="NPB-Ya-L6p" sceneMemberID="viewController">
+                <viewController id="NPB-Ya-L6p" customClass="SettingsViewController" customModule="Drops" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VtU-1s-nFg"/>
                         <viewControllerLayoutGuide type="bottom" id="buk-QK-jh9"/>
@@ -16,7 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="zVu-iz-jPv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlQ-rc-Ajw">
+                                <rect key="frame" x="276" y="285" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonClicked" destination="NPB-Ya-L6p" eventType="touchUpInside" id="i2X-KI-SeV"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nlQ-rc-Ajw" firstAttribute="centerY" secondItem="zVu-iz-jPv" secondAttribute="centerY" id="7yb-Zp-68L"/>
+                            <constraint firstItem="nlQ-rc-Ajw" firstAttribute="centerX" secondItem="zVu-iz-jPv" secondAttribute="centerX" id="ikR-F5-txb"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="iBi-IU-DgJ"/>
                 </viewController>
@@ -125,8 +138,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long Press" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a0-ke-Oj7">
-                                <rect key="frame" x="258" y="290" width="85" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap and hold to update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a0-ke-Oj7">
+                                <rect key="frame" x="213" y="290" width="174" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
