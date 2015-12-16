@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class ForgotPasswordViewController: UIViewController {
+    
+    @IBOutlet var emailTextField: UITextField!
+    
+    private var email: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +26,22 @@ class ForgotPasswordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func passwordResetButtonClicked()
+    {
+        if emailTextField.text == nil {
+            print("no email")
+        } else {
+            let email = emailTextField.text!
+            PFUser.requestPasswordResetForEmailInBackground(email)
+            print("Password Reset Email Sent")
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
-    */
+    
+    @IBAction func backButtonClicked()
+    {
+        self.dismissViewControllerAnimated(true, completion: {});
+    }
 
 }

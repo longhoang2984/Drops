@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet var usernameTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    
+    private var username: String!
+    private var password: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +28,23 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func loginButtonClicked() {
+        
+        let username = usernameTextField.text!
+        let password = passwordTextField.text!
+        
+        PFUser.logInWithUsernameInBackground(username, password: password) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if user != nil {
+                // Do stuff after successful login.
+                print("Login Succesful!")
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+            } else {
+                // The login failed. Check error to see why.
+                print("\(error?.localizedDescription)")
+            }
+        }
     }
-    */
 
 }
