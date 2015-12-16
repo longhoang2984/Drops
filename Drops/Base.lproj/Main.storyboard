@@ -124,14 +124,36 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long Press" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a0-ke-Oj7">
+                                <rect key="frame" x="258" y="290" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.41176470588235292" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="8a0-ke-Oj7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qPJ-lj-rqd"/>
+                            <constraint firstItem="8a0-ke-Oj7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rOf-OT-MzJ"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="XLf-fh-TkJ" appends="YES" id="fkk-2V-1gx"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Update" id="XIE-ka-X1R"/>
                     <connections>
+                        <outlet property="longPressLabel" destination="8a0-ke-Oj7" id="4mk-CY-Oqb"/>
                         <segue destination="qsx-pV-AwP" kind="presentation" identifier="LoginSegueIdentifier" id="Lxr-GM-O28"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="XLf-fh-TkJ">
+                    <connections>
+                        <action selector="longPressed:" destination="BYZ-38-t0r" id="Zvg-Lu-88l"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-590" y="1231"/>
         </scene>
@@ -327,7 +349,7 @@
                                         <rect key="frame" x="20" y="46" width="520" height="27"/>
                                         <string key="text">We understand people forget things, that's no problem! Just use the form below and we will email you a password. Then you can start smiling again!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Your Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEB-lR-bGY">
@@ -410,7 +432,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Your Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wg9-dd-ve2">
                                         <rect key="frame" x="20" y="10" width="520" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yFD-MF-PBD">

@@ -10,6 +10,9 @@ import UIKit
 import Parse
 
 class UpdateViewController: UIViewController {
+    
+    @IBOutlet var longPressLabel: UILabel!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,8 @@ class UpdateViewController: UIViewController {
             }
         }
         
+        
+        
         }
     
     override func viewDidAppear(animated: Bool) {
@@ -39,13 +44,23 @@ class UpdateViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func longPressed(sender: UILongPressGestureRecognizer) {
+        
+        if (sender.state == UIGestureRecognizerState.Ended) {
+            print("Long Press Ended")
+            
+        } else if (sender.state == UIGestureRecognizerState.Began) {
+            print("Long Press Began")
+            
+        }
+    }
+    
+    
 }
