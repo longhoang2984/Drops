@@ -24,19 +24,13 @@ class SettingsViewController: UIViewController {
     
     @IBAction func logoutButtonClicked() {
         PFUser.logOut()
-        print("User logged out")
-        
+        let currentUser = PFUser.currentUser()
+        if currentUser == nil {
+            print("User logged out")
+            dispatch_async(dispatch_get_main_queue()){
+                self.tabBarController?.selectedIndex = 0
+            }
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

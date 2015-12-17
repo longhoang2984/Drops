@@ -22,6 +22,16 @@ class UpdateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
         // Check to see if a user is logged in
         let currentUser = PFUser.currentUser()
         if currentUser != nil {
@@ -34,16 +44,6 @@ class UpdateViewController: UIViewController {
                 self.performSegueWithIdentifier("LoginSegueIdentifier", sender: self)
             }
         }
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
     }
 
