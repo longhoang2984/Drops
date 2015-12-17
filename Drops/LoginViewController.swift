@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // Add alert to tell user what textfield is empty
             
         } else {
-            let username = usernameTextField.text!
+            let username = usernameTextField.text!.lowercaseString
             let password = passwordTextField.text!
         
             PFUser.logInWithUsernameInBackground(username, password: password) {
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     // The login failed. Check error to see why.
                     print("\(error?.localizedDescription)")
                     
-                    let loginErrorAlert = UIAlertController(title: "Oops!", message: "Something went wrong. Check your Username and Password and try again.", preferredStyle: .Alert)
+                    let loginErrorAlert = UIAlertController(title: "Oops!", message: "We were unable to log you in. Please check your username and password and try again.", preferredStyle: .Alert)
                     let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
                     loginErrorAlert.addAction(okButton)
                     self.presentViewController(loginErrorAlert, animated: true, completion: nil)
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    
+    // Go to next textfield or submit when return key is touched
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         if textField == self.usernameTextField {
             self.passwordTextField.becomeFirstResponder()
@@ -75,6 +75,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-
 
 }

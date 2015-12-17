@@ -9,13 +9,15 @@
 import UIKit
 import Photos
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var userProfileImageView: UIImageView!
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var userProfileTextField: UITextView!
+    @IBOutlet var userProfileTextField: UITextField!
+    @IBOutlet var formView: UIView!
+    @IBOutlet var registerButton: UIButton!
     
     private var profileImage: UIImage!
     private var username: String!
@@ -27,6 +29,17 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        usernameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        userProfileTextField.delegate = self
+        
+        // Round the coerner of the transparent formview
+        self.formView.layer.cornerRadius = 10
+        self.formView.clipsToBounds = true;
+        
+        // Round the corners of the registerButton
+        self.registerButton.layer.cornerRadius = 5
         
     }
 
@@ -84,9 +97,9 @@ class RegisterViewController: UIViewController {
         if userProfileImageView.image == nil {
             print("no profile image")
         } else {
-            let username = usernameTextField.text!
+            let username = usernameTextField.text!.lowercaseString
             let password = passwordTextField.text!
-            let email = emailTextField.text!
+            let email = emailTextField.text!.lowercaseString
             let profileText = userProfileTextField.text!
             
             let newUser = User(username: username, password: password, email: email, image: profileImage, profileText: profileText)
@@ -110,6 +123,29 @@ class RegisterViewController: UIViewController {
     {
         self.dismissViewControllerAnimated(true, completion: {});
     }
+    
+    // Dismisses the keyboard if touch event outside the textfield
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Go to next textfield or submit when return key is touched
+    func textFieldShouldReturn(textField: UITextField) -> Bool{
+        if textField == self.usernameTextField {
+            self.emailTextField.becomeFirstResponder()
+            
+        } else if textField == self.emailTextField {
+            self.passwordTextField.becomeFirstResponder()
+            
+        } else if textField == self.passwordTextField {
+            self.userProfileTextField.becomeFirstResponder()
+            
+        } else if textField == self.userProfileTextField {
+            signUpButtonClicked()
+        }
+        return true
+    }
+
 
 }
 
