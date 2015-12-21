@@ -21,7 +21,6 @@ class UpdateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -83,11 +82,31 @@ class UpdateViewController: UIViewController {
             let newWeatherUpdate = WeatherUpdate(author: PFUser.currentUser()!, weatherValue: weatherValue!)
             newWeatherUpdate.saveInBackgroundWithBlock { (success, error) -> Void in
                 if error == nil {
-                    print("Post to parse successful")
+                    print("Post Update to parse successful")
+                    
+                    if self.weatherValue <= 2 {
+                        // If user is having a great/good day ask if they want to add a drop
+                        let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! Would you like to send a Drop?", preferredStyle: .Alert)
+                        let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> () in
+                            self.performSegueWithIdentifier("MessageSegueIdentifier", sender: self)
+                        })
+                        let noButton = UIAlertAction(title: "No", style: .Cancel, handler: nil)
+                        postSuccessAlert.addAction(yesButton)
+                        postSuccessAlert.addAction(noButton)
+                        self.presentViewController(postSuccessAlert, animated: true, completion: nil)
+                        
+                    } else {
+                        
+                        let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! You are amazing! Drops will be sent shortly. :)", preferredStyle: .Alert)
+                        let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                        postSuccessAlert.addAction(okButton)
+                        self.presentViewController(postSuccessAlert, animated: true, completion: nil)
+                    }
+                    
                 } else {
                     print("\(error?.localizedDescription)")
                 }
-                self.dismissViewControllerAnimated(true, completion: nil)
+                // self.dismissViewControllerAnimated(true, completion: nil)
             }
             
             self.longPressLabel.text = "tap and hold to update"

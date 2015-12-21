@@ -13,6 +13,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var formView: UIView!
+    @IBOutlet var loginButton: UIButton!
     
     private var username: String!
     private var password: String!
@@ -22,8 +24,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        
+        // Round the corners of the transparent formview
+        self.formView.layer.cornerRadius = 10
+        self.formView.clipsToBounds = true;
+        
+        // Round the corners of the registerButton
+        self.loginButton.layer.cornerRadius = 5
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +43,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if usernameTextField.text == "" || passwordTextField.text == "" {
             print("error!")
-            // Add alert to tell user what textfield is empty
+
+            if usernameTextField.text == "" {
+                
+                print("No username")
+                let usernameErrorAlert = UIAlertController(title: "Oops!", message: "We have no username to log you in with. Please input your username and try again.", preferredStyle: .Alert)
+                let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                usernameErrorAlert.addAction(okButton)
+                self.presentViewController(usernameErrorAlert, animated: true, completion: nil)
+                
+            } else if passwordTextField.text == "" {
+                
+                print("No Password")
+                let passwordErrorAlert = UIAlertController(title: "Oops!", message: "We have no password to log you in with. Please input your password and try again.", preferredStyle: .Alert)
+                let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                passwordErrorAlert.addAction(okButton)
+                self.presentViewController(passwordErrorAlert, animated: true, completion: nil)
+            } else if usernameTextField.text == "" || passwordTextField.text == "" {
+                
+                print("No Username or Password")
+                let usernameandpasswordErrorAlert = UIAlertController(title: "Oops!", message: "We cant log you in because you havent input any information. Please update the username and password field and try again.", preferredStyle: .Alert)
+                let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                usernameandpasswordErrorAlert.addAction(okButton)
+                self.presentViewController(usernameandpasswordErrorAlert, animated: true, completion: nil)
+                
+            }
+            
             
         } else {
             let username = usernameTextField.text!.lowercaseString
@@ -62,9 +95,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Dismisses the keyboard if touch event outside the textfield
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
     
     // Go to next textfield or submit when return key is touched
     func textFieldShouldReturn(textField: UITextField) -> Bool{

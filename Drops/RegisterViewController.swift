@@ -34,7 +34,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         userProfileTextField.delegate = self
         
-        // Round the coerner of the transparent formview
+        // Round the corners of the transparent formview
         self.formView.layer.cornerRadius = 10
         self.formView.clipsToBounds = true;
         
@@ -119,15 +119,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func backButtonClicked()
+    @IBAction func closeButtonClicked()
     {
         self.dismissViewControllerAnimated(true, completion: {});
     }
     
     // Dismisses the keyboard if touch event outside the textfield
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
     
     // Go to next textfield or submit when return key is touched
     func textFieldShouldReturn(textField: UITextField) -> Bool{

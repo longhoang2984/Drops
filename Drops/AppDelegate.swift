@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        // Turn IGKeyboard on
+        IQKeyboardManager.sharedManager().enable = true
+        
         // Override point for customization after application launch.
         return true
     }

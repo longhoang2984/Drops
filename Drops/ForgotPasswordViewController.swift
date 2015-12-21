@@ -12,13 +12,20 @@ import Parse
 class ForgotPasswordViewController: UIViewController {
     
     @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var formView: UIView!
+    @IBOutlet var newPasswordButton: UIButton!
     
     private var email: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Round the corners of the transparent formview
+        self.formView.layer.cornerRadius = 10
+        self.formView.clipsToBounds = true;
+        
+        // Round the corners of the registerButton
+        self.newPasswordButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +49,15 @@ class ForgotPasswordViewController: UIViewController {
     @IBAction func backButtonClicked()
     {
         self.dismissViewControllerAnimated(true, completion: {});
+    }
+    
+    // Go to next textfield or submit when return key is touched
+    func textFieldShouldReturn(textField: UITextField) -> Bool{
+        if textField == self.emailTextField {
+            self.view.endEditing(true)
+            passwordResetButtonClicked()
+        }
+        return true
     }
 
 }
