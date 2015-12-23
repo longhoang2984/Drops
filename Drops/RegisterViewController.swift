@@ -102,18 +102,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             let email = emailTextField.text!.lowercaseString
             let profileText = userProfileTextField.text!
             
-            let newUser = User(username: username, password: password, email: email, image: profileImage, profileText: profileText)
+            let newUser = User(username: username, password: password, email: email, image: profileImage, profileText: profileText, createdMessages: [], messagesInbox: [], weatherUpdates: [])
             newUser.signUpInBackgroundWithBlock({ (success, error) -> Void in
+                
                 if error == nil {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    
                     print("register success!")
+                    let postSuccessAlert = UIAlertController(title: "Welcome \(username)!", message: "Your profile has been created! :)", preferredStyle: .Alert)
+                    let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: { (action: UIAlertAction!) -> () in
+                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FirstViewController") as UIViewController
+                        self.presentViewController(viewController, animated: true, completion: nil)
+                    })
+                    postSuccessAlert.addAction(okButton)
+                    self.presentViewController(postSuccessAlert, animated: true, completion: nil)
+                    
                 } else {
                     print("\(error?.localizedDescription)")
-                    print(username)
-                    print(self.password)
-                    print(self.email)
-                    print(self.profileImage)
-                    print(profileText)
                 }
             })
         }

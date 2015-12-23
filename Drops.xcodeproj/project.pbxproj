@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550356491C2A367300CADC94 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550356481C2A367300CADC94 /* ProfileViewController.swift */; };
 		550A54221C1D454F00B33DD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A54211C1D454F00B33DD1 /* Message.swift */; };
 		550A54241C1D4E2A00B33DD1 /* WeatherUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A54231C1D4E2A00B33DD1 /* WeatherUpdate.swift */; };
 		550A54261C1D5B6D00B33DD1 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A54251C1D5B6D00B33DD1 /* Global.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		550356481C2A367300CADC94 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		550A54211C1D454F00B33DD1 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		550A54231C1D4E2A00B33DD1 /* WeatherUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUpdate.swift; sourceTree = "<group>"; };
 		550A54251C1D5B6D00B33DD1 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -203,6 +205,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5503564A1C2A367900CADC94 /* Profile Screen */ = {
+			isa = PBXGroup;
+			children = (
+				550356481C2A367300CADC94 /* ProfileViewController.swift */,
+			);
+			name = "Profile Screen";
+			sourceTree = "<group>";
+		};
 		550D059E1C16891700AB88DB /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +385,7 @@
 				55F7E2681C14D64C00B8A36A /* Main.storyboard */,
 				550D059E1C16891700AB88DB /* Home Screen */,
 				55FBC12D1C27AD870012D4A4 /* Message Screen */,
+				5503564A1C2A367900CADC94 /* Profile Screen */,
 				550D05A11C169C9500AB88DB /* Login Screen */,
 				550D05A41C169E8300AB88DB /* Register Screen */,
 				552DDC701C169FA2004D609B /* Forgot Password Screen */,
@@ -600,6 +611,7 @@
 				5543D1041C2491D500734DF4 /* IQUITextFieldView+Additions.swift in Sources */,
 				5534DF141C1F7826001F1054 /* AnimationController.swift in Sources */,
 				5543D10B1C2491D500734DF4 /* IQKeyboardReturnKeyHandler.swift in Sources */,
+				550356491C2A367300CADC94 /* ProfileViewController.swift in Sources */,
 				5534DF161C1F7826001F1054 /* ImageCollectionViewCell.swift in Sources */,
 				5543D1061C2491D500734DF4 /* IQUIViewController+Additions.swift in Sources */,
 				55F7E2671C14D64C00B8A36A /* UpdateViewController.swift in Sources */,

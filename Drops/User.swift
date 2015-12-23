@@ -19,7 +19,7 @@ public class User: PFUser {
     @NSManaged public var weatherUpdates: [String]!
     
     // Create new user
-    init(username: String, password: String, email: String, image: UIImage, profileText: String)
+    init(username: String, password: String, email: String, image: UIImage, profileText: String, createdMessages: [String], messagesInbox: [String], weatherUpdates: [String])
     {
         super.init()
         
@@ -30,6 +30,10 @@ public class User: PFUser {
         self.email = email
         self.password = password
         self.profileText = profileText
+        self.createdMessages = createdMessages
+        self.messagesInbox = messagesInbox
+        self.weatherUpdates = weatherUpdates
+        
     }
     
     
