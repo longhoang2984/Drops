@@ -12,35 +12,27 @@ import Parse
 public class Message: PFObject, PFSubclassing {
     
     // MARK: - Public API
-    @NSManaged public var author: PFUser // must use PFUser
+    @NSManaged public var author: PFUser! // must use PFUser
     @NSManaged public var messageText: String!
-    @NSManaged public var readBy: [String]!
-    @NSManaged public var reportedBy: [String]!
     
     // MARK: - Create new weatherUpdate
     init(author: PFUser, messageText: String) {
         super.init()
         self.author = author
         self.messageText = messageText
-        self.readBy = [String]()
-        self.reportedBy = [String]()
     }
     
-    public func report() {
-        let currentUserObjectId = User.currentUser()!.objectId!
-        if !reportedBy.contains(currentUserObjectId) {
-            reportedBy.insert(currentUserObjectId, atIndex: 0)
-            self.saveInBackground()
-        }
-    }
+//    public func report() {
+//        let currentUserObjectId = User.currentUser()!.objectId!
+//        if !reportedBy.contains(currentUserObjectId) {
+//            reportedBy.insert(currentUserObjectId, atIndex: 0)
+//            self.saveInBackground()
+//        }
+//    }
     
-    public func read() {
-        let currentUserObjectId = User.currentUser()!.objectId!
-        if !readBy.contains(currentUserObjectId) {
-            readBy.insert(currentUserObjectId, atIndex: 0)
-            self.saveInBackground()
-        }
-        
+    override init()
+    {
+        super.init()
     }
     
     // MARK: - PFSubclassing

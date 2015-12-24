@@ -102,7 +102,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             let email = emailTextField.text!.lowercaseString
             let profileText = userProfileTextField.text!
             
-            let newUser = User(username: username, password: password, email: email, image: profileImage, profileText: profileText, createdMessages: [], messagesInbox: [], weatherUpdates: [])
+            let newUser = User(username: username, password: password, email: email, image: profileImage, profileText: profileText, messagesInbox: [])
             newUser.signUpInBackgroundWithBlock({ (success, error) -> Void in
                 
                 if error == nil {

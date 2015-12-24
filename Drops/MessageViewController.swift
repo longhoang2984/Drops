@@ -16,6 +16,8 @@ class MessageViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var messageButton: UIButton!
     
     private var messageText: String?
+    
+    let user = PFUser.currentUser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +30,6 @@ class MessageViewController: UIViewController, UITextFieldDelegate {
         
         // Round the corners of the registerButton
         self.messageButton.layer.cornerRadius = 5
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,10 +40,22 @@ class MessageViewController: UIViewController, UITextFieldDelegate {
     @IBAction func messageButtonClicked() {
         
         let messageText = messageTextField.text!
-        let newMessage = Message(author: PFUser.currentUser()!, messageText: messageText)
+        let newMessage = Message(author: user!, messageText: messageText)
         newMessage.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
                 print("Post Drop to parse successful")
+                
+                let relation = self.user!.relationForKey("createdMessages")
+                relation.addObject(newMessage)
+                self.user!.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        // The post has been added to the user's likes relation.
+                    } else {
+                        // There was a problem, check error.description
+                    }
+                }
+
                 
                 let postSuccessAlert = UIAlertController(title: "Success!", message: "Your drop has been added! Thank you so much!", preferredStyle: .Alert)
                 let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: { (action: UIAlertAction!) -> () in

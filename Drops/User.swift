@@ -13,13 +13,11 @@ public class User: PFUser {
     
     // MARK: - Public API
     @NSManaged public var profileImageFile: PFFile!
-    @NSManaged public var profileText: String
-    @NSManaged public var createdMessages: [String]!
+    @NSManaged public var profileText: String!
     @NSManaged public var messagesInbox: [String]!
-    @NSManaged public var weatherUpdates: [String]!
     
     // Create new user
-    init(username: String, password: String, email: String, image: UIImage, profileText: String, createdMessages: [String], messagesInbox: [String], weatherUpdates: [String])
+    init(username: String, password: String, email: String, image: UIImage, profileText: String, messagesInbox: [String])
     {
         super.init()
         
@@ -30,10 +28,13 @@ public class User: PFUser {
         self.email = email
         self.password = password
         self.profileText = profileText
-        self.createdMessages = createdMessages
         self.messagesInbox = messagesInbox
-        self.weatherUpdates = weatherUpdates
         
+    }
+    
+    override init()
+    {
+        super.init()
     }
     
     

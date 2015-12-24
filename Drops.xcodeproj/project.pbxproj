@@ -46,6 +46,7 @@
 		55BF1CA31C263C15009F3657 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55BF1CA11C263C15009F3657 /* Nunito-Bold.ttf */; };
 		55BF1CA41C263C15009F3657 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55BF1CA21C263C15009F3657 /* Nunito-Regular.ttf */; };
 		55C4CB3A1C1BA6A400940390 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4CB391C1BA6A400940390 /* User.swift */; };
+		55E29A0C1C2BB89C00634573 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E29A0B1C2BB89C00634573 /* UIViewExtensions.swift */; };
 		55F7E2651C14D64C00B8A36A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7E2641C14D64C00B8A36A /* AppDelegate.swift */; };
 		55F7E2671C14D64C00B8A36A /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7E2661C14D64C00B8A36A /* UpdateViewController.swift */; };
 		55F7E26A1C14D64C00B8A36A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F7E2681C14D64C00B8A36A /* Main.storyboard */; };
@@ -130,6 +131,7 @@
 		55BF1CA11C263C15009F3657 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		55BF1CA21C263C15009F3657 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		55C4CB391C1BA6A400940390 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		55E29A0B1C2BB89C00634573 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		55F7E2611C14D64C00B8A36A /* Drops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F7E2641C14D64C00B8A36A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55F7E2661C14D64C00B8A36A /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				550A54211C1D454F00B33DD1 /* Message.swift */,
 				550A54231C1D4E2A00B33DD1 /* WeatherUpdate.swift */,
 				550A54251C1D5B6D00B33DD1 /* Global.swift */,
+				55E29A0B1C2BB89C00634573 /* UIViewExtensions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5543D1031C2491D500734DF4 /* IQNSArray+Sort.swift in Sources */,
+				55E29A0C1C2BB89C00634573 /* UIViewExtensions.swift in Sources */,
 				5534DF1D1C1F7826001F1054 /* PreviewSupplementaryView.swift in Sources */,
 				5534DF191C1F7826001F1054 /* ImagePreviewFlowLayout.swift in Sources */,
 				550D05A01C169C9000AB88DB /* LoginViewController.swift in Sources */,

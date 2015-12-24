@@ -22,9 +22,19 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.formView.alpha = 0
+        
+        self.totalUpdatesLabel.text = ""
+        self.totalDropsLabel.text = ""
+        self.usernameLabel.text = ""
+        self.currentMoodLabel.text = ""
+        self.userProfileTextLabel.text = ""
+        
         // Round the corners of the transparent formview
         self.formView.layer.cornerRadius = 10
         self.formView.clipsToBounds = true;
+        
+        self.formView.fadeIn()
         
         // get current user
         let query = PFUser.query()
@@ -37,9 +47,6 @@ class ProfileViewController: UIViewController {
             } else {
                 // The find succeeded.
                 
-                let totalUpdates = object!["weatherUpdates"] as? [String]
-                self.totalUpdatesLabel.text = "\(totalUpdates?.count) Updates"
-                
                 let userProfileImageFile = object!["profileImageFile"] as? PFFile
                 userProfileImageFile!.getDataInBackgroundWithBlock {
                     (imageData: NSData?, error: NSError?) -> Void in
@@ -50,13 +57,16 @@ class ProfileViewController: UIViewController {
                     }
                 }
                 
-                let totalDrops = object!["createdMessages"] as? [String]
-                self.totalDropsLabel.text = "\(totalDrops?.count) Drops"
+                // need to count user created updates. I think will have to do with cloud code and update a seperate column in the user class.
+                self.totalUpdatesLabel.text = "0 Updates"
+                
+                // need to count user created messages. I think will have to do with cloud code and update a seperate column in the user class.
+                self.totalDropsLabel.text = "0 Drops"
                 
                 self.usernameLabel.text = object!["username"] as? String
                 
-                let currentMood = totalUpdates?.first
-                self.currentMoodLabel.text = currentMood
+                // need to get the latest weather update
+                self.currentMoodLabel.text = "Latest Weather Update"
                 
                 self.userProfileTextLabel.text = object!["profileText"] as? String
                 
@@ -67,21 +77,10 @@ class ProfileViewController: UIViewController {
         print(User.currentUser())
 
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

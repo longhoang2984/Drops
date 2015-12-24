@@ -16,7 +16,7 @@ class UpdateViewController: UIViewController {
     private var weatherValue: Int?
     
     var timer: NSTimer?
-    
+
 
 
     override func viewDidLoad() {
@@ -84,6 +84,17 @@ class UpdateViewController: UIViewController {
                 if error == nil {
                     print("Post Update to parse successful")
                     
+                    let relation = PFUser.currentUser()!.relationForKey("weatherUpdates")
+                    relation.addObject(newWeatherUpdate)
+                    PFUser.currentUser()!.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            print("Post Update to user's WeatherUpdates successful")
+                        } else {
+                            print("\(error?.localizedDescription)")
+                        }
+                    }
+                    
                     if self.weatherValue <= 2 {
                         // If user is having a great/good day ask if they want to add a drop
                         let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! Would you like to send a Drop?", preferredStyle: .Alert)
@@ -106,7 +117,6 @@ class UpdateViewController: UIViewController {
                 } else {
                     print("\(error?.localizedDescription)")
                 }
-                // self.dismissViewControllerAnimated(true, completion: nil)
             }
             
             self.longPressLabel.text = "tap and hold to update"

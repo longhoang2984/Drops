@@ -22,6 +22,11 @@ public class WeatherUpdate: PFObject, PFSubclassing {
         self.weatherValue = weatherValue
     }
     
+    override init()
+    {
+        super.init()
+    }
+    
     // MARK: - PFSubclassing
     override public class func initialize() {
         struct Static {
