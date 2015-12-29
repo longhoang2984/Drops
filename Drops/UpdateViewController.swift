@@ -25,7 +25,6 @@ class UpdateViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -84,17 +83,6 @@ class UpdateViewController: UIViewController {
                 if error == nil {
                     print("Post Update to parse successful")
                     
-                    let relation = PFUser.currentUser()!.relationForKey("weatherUpdates")
-                    relation.addObject(newWeatherUpdate)
-                    PFUser.currentUser()!.saveInBackgroundWithBlock {
-                        (success: Bool, error: NSError?) -> Void in
-                        if (success) {
-                            print("Post Update to user's WeatherUpdates successful")
-                        } else {
-                            print("\(error?.localizedDescription)")
-                        }
-                    }
-                    
                     if self.weatherValue <= 2 {
                         // If user is having a great/good day ask if they want to add a drop
                         let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! Would you like to send a Drop?", preferredStyle: .Alert)
@@ -107,7 +95,7 @@ class UpdateViewController: UIViewController {
                         self.presentViewController(postSuccessAlert, animated: true, completion: nil)
                         
                     } else {
-                        
+                        // If user is having a bad day tell them drops are coming
                         let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! You are amazing! Drops will be sent shortly. :)", preferredStyle: .Alert)
                         let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
                         postSuccessAlert.addAction(okButton)

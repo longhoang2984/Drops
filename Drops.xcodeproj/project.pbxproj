@@ -15,6 +15,7 @@
 		550D059D1C1685C100AB88DB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550D059C1C1685C100AB88DB /* Social.framework */; };
 		550D05A01C169C9000AB88DB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D059F1C169C9000AB88DB /* LoginViewController.swift */; };
 		550D05A31C169E7B00AB88DB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D05A21C169E7B00AB88DB /* RegisterViewController.swift */; };
+		552433831C321B4700DE4BFB /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552433821C321B4700DE4BFB /* HistoryViewController.swift */; };
 		552DDC6F1C169F9B004D609B /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DDC6E1C169F9B004D609B /* ForgotPasswordViewController.swift */; };
 		5534DF141C1F7826001F1054 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534DF091C1F7826001F1054 /* AnimationController.swift */; };
 		5534DF151C1F7826001F1054 /* ImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534DF0A1C1F7826001F1054 /* ImageAction.swift */; };
@@ -99,6 +100,7 @@
 		550D059C1C1685C100AB88DB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		550D059F1C169C9000AB88DB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		550D05A21C169E7B00AB88DB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		552433821C321B4700DE4BFB /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		552DDC6E1C169F9B004D609B /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5534DF091C1F7826001F1054 /* AnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
 		5534DF0A1C1F7826001F1054 /* ImageAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAction.swift; sourceTree = "<group>"; };
@@ -237,6 +239,14 @@
 				550D05A21C169E7B00AB88DB /* RegisterViewController.swift */,
 			);
 			name = "Register Screen";
+			sourceTree = "<group>";
+		};
+		552433841C321B5800DE4BFB /* History Screen */ = {
+			isa = PBXGroup;
+			children = (
+				552433821C321B4700DE4BFB /* HistoryViewController.swift */,
+			);
+			name = "History Screen";
 			sourceTree = "<group>";
 		};
 		552DDC701C169FA2004D609B /* Forgot Password Screen */ = {
@@ -388,6 +398,7 @@
 				55F7E2681C14D64C00B8A36A /* Main.storyboard */,
 				550D059E1C16891700AB88DB /* Home Screen */,
 				55FBC12D1C27AD870012D4A4 /* Message Screen */,
+				552433841C321B5800DE4BFB /* History Screen */,
 				5503564A1C2A367900CADC94 /* Profile Screen */,
 				550D05A11C169C9500AB88DB /* Login Screen */,
 				550D05A41C169E8300AB88DB /* Register Screen */,
@@ -622,6 +633,7 @@
 				55F7E2651C14D64C00B8A36A /* AppDelegate.swift in Sources */,
 				550D05A31C169E7B00AB88DB /* RegisterViewController.swift in Sources */,
 				550A54221C1D454F00B33DD1 /* Message.swift in Sources */,
+				552433831C321B4700DE4BFB /* HistoryViewController.swift in Sources */,
 				550A54261C1D5B6D00B33DD1 /* Global.swift in Sources */,
 				5534DF171C1F7826001F1054 /* ImagePickerCollectionView.swift in Sources */,
 				557881A51C21FA6F0042E30B /* SettingsViewController.swift in Sources */,

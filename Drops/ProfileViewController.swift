@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let currentUser = PFUser.currentUser()
+        
         self.formView.alpha = 0
         
         self.totalUpdatesLabel.text = ""
@@ -36,14 +38,51 @@ class ProfileViewController: UIViewController {
         
         self.formView.fadeIn()
         
-        // get current user
+        // Get the latest weather update
+        let currentMood = PFQuery(className: "WeatherUpdate")
+        currentMood.whereKey("author", equalTo: currentUser!)
+        currentMood.orderByDescending("createdAt")
+        currentMood.getFirstObjectInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error != nil || object == nil {
+                print("The currentMood request failed.")
+            } else {
+                // The find succeeded.
+                print("Successfully retrieved the current mood object.")
+                let moodNumber = object!["weatherValue"]
+                self.currentMoodLabel.text = "\(moodNumber) current mood"
+            }
+        }
+        
+        // Get the number of messages/drops for the current user
+        let messageCount = PFQuery(className:"Message")
+        messageCount.whereKey("author", equalTo: currentUser!)
+        messageCount.countObjectsInBackgroundWithBlock {
+            (count: Int32, error: NSError?) -> Void in
+            if error == nil {
+                print("Successfully retrieved messages count")
+                self.totalDropsLabel.text = "\(count) Drops"
+            }
+        }
+        
+        // Get the number of updates for current user
+        let updateCount = PFQuery(className:"WeatherUpdate")
+        updateCount.whereKey("author", equalTo: currentUser!)
+        updateCount.countObjectsInBackgroundWithBlock {
+            (count: Int32, error: NSError?) -> Void in
+            if error == nil {
+                print("Successfully retrieved updates count")
+                self.totalUpdatesLabel.text = "\(count) Updates"
+            }
+        }
+        
+        // get current user info
         let query = PFUser.query()
-        let currentUser = PFUser.currentUser()
         query!.whereKey("username", equalTo: currentUser!.username!)
         query!.getFirstObjectInBackgroundWithBlock {
             (object: PFObject?, error: NSError?) -> Void in
             if error != nil || object == nil {
-                print("The getFirstObject request failed.")
+                print("The user info query request failed.")
             } else {
                 // The find succeeded.
                 
@@ -57,24 +96,13 @@ class ProfileViewController: UIViewController {
                     }
                 }
                 
-                // need to count user created updates. I think will have to do with cloud code and update a seperate column in the user class.
-                self.totalUpdatesLabel.text = "0 Updates"
-                
-                // need to count user created messages. I think will have to do with cloud code and update a seperate column in the user class.
-                self.totalDropsLabel.text = "0 Drops"
-                
                 self.usernameLabel.text = object!["username"] as? String
-                
-                // need to get the latest weather update
-                self.currentMoodLabel.text = "Latest Weather Update"
                 
                 self.userProfileTextLabel.text = object!["profileText"] as? String
                 
-                print("Successfully retrieved the object.")
+                print("Successfully retrieved the user info.")
             }
         }
-        
-        print(User.currentUser())
 
     }
     

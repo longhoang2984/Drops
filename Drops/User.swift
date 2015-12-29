@@ -48,4 +48,15 @@ public class User: PFUser {
             self.registerSubclass()
         }
     }
+    
+//    let relation = self.user!.relationForKey("createdMessages")
+//    relation.addObject(newMessage)
+//    self.user!.saveInBackgroundWithBlock {
+//    (success: Bool, error: NSError?) -> Void in
+//    if (success) {
+//    // The post has been added to the user's likes relation.
+//    } else {
+//    // There was a problem, check error.description
+//    }
+//    }
 }

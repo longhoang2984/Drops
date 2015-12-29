@@ -45,18 +45,6 @@ class MessageViewController: UIViewController, UITextFieldDelegate {
             if error == nil {
                 print("Post Drop to parse successful")
                 
-                let relation = self.user!.relationForKey("createdMessages")
-                relation.addObject(newMessage)
-                self.user!.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError?) -> Void in
-                    if (success) {
-                        // The post has been added to the user's likes relation.
-                    } else {
-                        // There was a problem, check error.description
-                    }
-                }
-
-                
                 let postSuccessAlert = UIAlertController(title: "Success!", message: "Your drop has been added! Thank you so much!", preferredStyle: .Alert)
                 let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: { (action: UIAlertAction!) -> () in
                     self.dismissViewControllerAnimated(true, completion: {});
