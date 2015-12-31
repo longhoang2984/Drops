@@ -43,6 +43,7 @@
 		5543D1101C2491D500734DF4 /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D0FF1C2491D500734DF4 /* IQUIView+IQKeyboardToolbar.swift */; };
 		5543D1111C2491D500734DF4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5543D1011C2491D500734DF4 /* Info.plist */; };
 		5543D1121C2491D500734DF4 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5543D1021C2491D500734DF4 /* IQKeyboardManager.bundle */; };
+		55641A891C350AC90030390B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55641A881C350AC90030390B /* MessagesViewController.swift */; };
 		5572F6861C345AD8008C4906 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572F6851C345AD8008C4906 /* HistoryTableViewCell.swift */; };
 		557881A51C21FA6F0042E30B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557881A41C21FA6F0042E30B /* SettingsViewController.swift */; };
 		55BF1CA31C263C15009F3657 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55BF1CA11C263C15009F3657 /* Nunito-Bold.ttf */; };
@@ -130,6 +131,7 @@
 		5543D0FF1C2491D500734DF4 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
 		5543D1011C2491D500734DF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5543D1021C2491D500734DF4 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		55641A881C350AC90030390B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		5572F6851C345AD8008C4906 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		557881A41C21FA6F0042E30B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		55BF1CA11C263C15009F3657 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -341,6 +343,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		55641A8A1C350B020030390B /* Messages Screen */ = {
+			isa = PBXGroup;
+			children = (
+				55641A881C350AC90030390B /* MessagesViewController.swift */,
+			);
+			name = "Messages Screen";
+			sourceTree = "<group>";
+		};
 		557881A61C21FA870042E30B /* Settings Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +411,7 @@
 				55F7E2681C14D64C00B8A36A /* Main.storyboard */,
 				550D059E1C16891700AB88DB /* Home Screen */,
 				55FBC12D1C27AD870012D4A4 /* Message Screen */,
+				55641A8A1C350B020030390B /* Messages Screen */,
 				552433841C321B5800DE4BFB /* History Screen */,
 				5503564A1C2A367900CADC94 /* Profile Screen */,
 				550D05A11C169C9500AB88DB /* Login Screen */,
@@ -626,6 +637,7 @@
 				5534DF181C1F7826001F1054 /* ImagePickerSheetController.swift in Sources */,
 				5543D10D1C2491D500734DF4 /* IQBarButtonItem.swift in Sources */,
 				5534DF151C1F7826001F1054 /* ImageAction.swift in Sources */,
+				55641A891C350AC90030390B /* MessagesViewController.swift in Sources */,
 				5543D1041C2491D500734DF4 /* IQUITextFieldView+Additions.swift in Sources */,
 				5534DF141C1F7826001F1054 /* AnimationController.swift in Sources */,
 				5572F6861C345AD8008C4906 /* HistoryTableViewCell.swift in Sources */,
