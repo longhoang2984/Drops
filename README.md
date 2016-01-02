@@ -5,7 +5,7 @@ New app to help people lift their mood/spirit
 <ul>
 <li>make clouds float from right to left in the background of login views</li>
 
-<li>get camera to work on take a photo</li>
+<li>make images from user focus/zoom on face</li>
 
 <li>create animations for different weather types on update screen</li>
 
