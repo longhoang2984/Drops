@@ -64,11 +64,24 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         if authorization == .Authorized {
             let controller = ImagePickerSheetController()
             
+            controller.addAction(ImageAction(title: NSLocalizedString("Photo Library", comment: "ActionTitle"),
+                secondaryTitle: NSLocalizedString("Use this one", comment: "Action Title"),
+                handler: { (_) -> () in
+                    
+                    self.presentPhotoLibrary()
+                    
+                }, secondaryHandler: { (action, numberOfPhotos) -> () in
+                    controller.getSelectedImagesWithCompletion({ (images) -> Void in
+                        self.profileImage = images[0]
+                        self.userProfileImageView.image = self.profileImage
+                    })
+            }))
+            
             controller.addAction(ImageAction(title: NSLocalizedString("Take a Photo", comment: "ActionTitle"),
                 secondaryTitle: NSLocalizedString("Use this one", comment: "Action Title"),
                 handler: { (_) -> () in
                     
-                    self.presentCamera()
+                        self.presentCamera()
                     
                 }, secondaryHandler: { (action, numberOfPhotos) -> () in
                     controller.getSelectedImagesWithCompletion({ (images) -> Void in
@@ -79,11 +92,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             
             controller.addAction(ImageAction(title: NSLocalizedString("Cancel", comment: "Action Title"), style: .Cancel, handler: nil, secondaryHandler: nil))
             
-            presentViewController(controller, animated: true, completion: nil)
+            self.presentViewController(controller, animated: true, completion: nil)
         }
     }
     
-    func presentCamera()
+    func presentPhotoLibrary()
     {
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
@@ -91,9 +104,24 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
+    
+    func presentCamera() {
 
-    @IBAction func signUpButtonClicked()
-    {
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera){
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.cameraDevice = .Front
+        } else {
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        }
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+
+    @IBAction func signUpButtonClicked() {
         if userProfileImageView.image == nil {
             print("no profile image")
         } else {
@@ -123,15 +151,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func closeButtonClicked()
-    {
+    @IBAction func closeButtonClicked() {
         self.dismissViewControllerAnimated(true, completion: {});
     }
-    
-    // Dismisses the keyboard if touch event outside the textfield
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        self.view.endEditing(true)
-//    }
     
     // Go to next textfield or submit when return key is touched
     func textFieldShouldReturn(textField: UITextField) -> Bool{
@@ -153,12 +175,23 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 
 }
 
-extension RegisterViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate
-{
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
-    {
+extension RegisterViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dispatch_async(dispatch_get_main_queue(), {
+            picker.dismissViewControllerAnimated(true, completion: nil)
+        })
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         self.profileImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         self.userProfileImageView.image! = self.profileImage
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        userProfileImageView.contentMode = .ScaleAspectFill
+        userProfileImageView.layer.cornerRadius = 25.0
+        userProfileImageView.layer.borderWidth = 0.0
+        userProfileImageView.clipsToBounds = true
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            picker.dismissViewControllerAnimated(true, completion: nil)
+        })
     }
 }

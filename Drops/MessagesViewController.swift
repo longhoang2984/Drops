@@ -10,18 +10,17 @@ import UIKit
 
 class MessagesViewController: UIViewController {
     
-    @IBOutlet var animatorView: UIView!
-    
     var maxX : CGFloat = 320
     var maxY : CGFloat = 320
-    let boxSize : CGFloat = 30.0
+    let boxSize : CGFloat = 50.0
     var boxes : Array<UIView> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         maxX = super.view.bounds.size.width - boxSize
         maxY = super.view.bounds.size.height - boxSize
-        // Do any additional setup after loading the view, typically from a nib.
+
         createAnimatorStuff()
         generateBoxes()
     }
@@ -58,6 +57,9 @@ class MessagesViewController: UIViewController {
     
     func addBox(location: CGRect, color: UIColor) -> UIView {
         let newBox = UIView(frame: location)
+        newBox.layer.cornerRadius = 25.0
+        newBox.layer.borderWidth = 0.0
+        newBox.clipsToBounds = true
         newBox.backgroundColor = color
         
         view.addSubview(newBox)
@@ -78,25 +80,29 @@ class MessagesViewController: UIViewController {
     
     var animator:UIDynamicAnimator? = nil
     let gravity = UIGravityBehavior()
-    let collider = UICollisionBehavior()
+    var collider = UICollisionBehavior()
 
     let itemBehavior = UIDynamicItemBehavior()
     
     func createAnimatorStuff() {
         animator = UIDynamicAnimator(referenceView:self.view)
         
-        gravity.gravityDirection = CGVectorMake(0, 0.8)
+        let fromPoint = tabBarController?.tabBar.frame.origin
+        let x = tabBarController?.tabBar.frame.origin.x
+        let width = tabBarController?.tabBar.frame.size.width
+        let toY = tabBarController?.tabBar.frame.origin.y;
+        
+        gravity.gravityDirection = CGVectorMake(0, 0.7)
         animator?.addBehavior(gravity)
         
         // We're bouncin' off the walls
         collider.translatesReferenceBoundsIntoBoundary = true
+        collider.addBoundaryWithIdentifier("tabbar", fromPoint: fromPoint!, toPoint: CGPoint(x: x!+width!, y: toY!))
         animator?.addBehavior(collider)
         
-        itemBehavior.friction = 0.1
+        itemBehavior.friction = 0.2
         itemBehavior.elasticity = 0.9
         animator?.addBehavior(itemBehavior)
-        
-        
     }
     
     func addBoxToBehaviors(box: UIView) {
