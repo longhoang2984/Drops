@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // Round the corners of the transparent formview
         self.formView.layer.cornerRadius = 10
-        self.formView.clipsToBounds = true;
+        self.formView.clipsToBounds = true
         
         // Round the corners of the registerButton
         self.loginButton.layer.cornerRadius = 5
@@ -35,7 +35,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+
         animateBackground()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
     }
     
     @IBAction func loginButtonClicked() {
