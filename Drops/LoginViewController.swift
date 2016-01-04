@@ -35,7 +35,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         animateBackground()
     }
     
@@ -105,15 +104,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func animateBackground() {
         let backgroundImage = UIImage(named:"backgroundPattern.png")!
-        var amountToKeepImageSquare = backgroundImage.size.height - self.view.frame.size.height
+        let amountToKeepImageSquare = backgroundImage.size.height - self.view.frame.size.height
         
         // UIImageView 1
-        var backgroundImageView1 = UIImageView(image: backgroundImage)
+        let backgroundImageView1 = UIImageView(image: backgroundImage)
         backgroundImageView1.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: backgroundImage.size.width - amountToKeepImageSquare, height: self.view.frame.size.height)
         self.view.addSubview(backgroundImageView1)
         
         // UIImageView 2
-        var backgroundImageView2 = UIImageView(image: backgroundImage)
+        let backgroundImageView2 = UIImageView(image: backgroundImage)
         backgroundImageView2.frame = CGRect(x: backgroundImageView1.frame.size.width, y: self.view.frame.origin.y, width: backgroundImage.size.width - amountToKeepImageSquare, height: self.view.frame.height)
         self.view.addSubview(backgroundImageView2)
         
@@ -125,7 +124,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             backgroundImageView1.frame = CGRectOffset(backgroundImageView1.frame, -1 * backgroundImageView1.frame.size.width, 0.0)
             backgroundImageView2.frame = CGRectOffset(backgroundImageView2.frame, -1 * backgroundImageView2.frame.size.width, 0.0)
             }, completion: nil)
-        
     }
 
 }

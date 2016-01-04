@@ -16,19 +16,9 @@ class UpdateViewController: UIViewController {
     private var weatherValue: Int?
     
     var timer: NSTimer?
-
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         
         // Check to see if a user is logged in
         let currentUser = PFUser.currentUser()
@@ -45,10 +35,6 @@ class UpdateViewController: UIViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func longPressed(sender: UILongPressGestureRecognizer) {
         
