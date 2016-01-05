@@ -80,28 +80,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AiK-Gn-luv">
-                                <rect key="frame" x="20" y="197" width="560" height="206"/>
+                                <rect key="frame" x="20" y="210" width="560" height="181"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jL6-la-nf0">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="206"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="181"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ehn-wg-dTs">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="206"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="181"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hT7-vQ-9u9">
-                                        <rect key="frame" x="242" y="10" width="75" height="75"/>
+                                        <rect key="frame" x="255" y="10" width="50" height="50"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="Bxc-0S-3bo"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="Dxh-f0-mYY"/>
-                                            <constraint firstAttribute="height" constant="75" id="NRC-Gf-FLh"/>
-                                            <constraint firstAttribute="width" constant="75" id="yZM-hi-HBR"/>
+                                            <constraint firstAttribute="height" constant="50" id="NRC-Gf-FLh"/>
+                                            <constraint firstAttribute="width" constant="50" id="yZM-hi-HBR"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQk-pL-1oJ">
-                                        <rect key="frame" x="10" y="165" width="540" height="21"/>
+                                        <rect key="frame" x="10" y="140" width="540" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -119,13 +117,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5v-Jn-0IZ">
-                                        <rect key="frame" x="20" y="95" width="520" height="24"/>
+                                        <rect key="frame" x="20" y="70" width="520" height="24"/>
                                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Mood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AO-Qg-Ncz">
-                                        <rect key="frame" x="20" y="129" width="520" height="21"/>
+                                        <rect key="frame" x="20" y="104" width="520" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

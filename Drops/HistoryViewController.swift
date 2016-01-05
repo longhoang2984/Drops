@@ -18,6 +18,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         let currentUser = PFUser.currentUser()
         
         // Get the weather updates
@@ -46,7 +51,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         sleep(3)
         
         do_table_refresh()
-        
+
     }
     
     //reload tableview

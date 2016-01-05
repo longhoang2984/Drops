@@ -16,6 +16,11 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet var newPasswordButton: UIButton!
     
     private var email: String!
+    
+    var backgroundImage:UIImage!
+    
+    var backgroundImageView1:UIImageView!
+    var backgroundImageView2:UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +36,21 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         animateBackground()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // UIImageView 1
+        if(backgroundImageView1 != nil){
+            backgroundImageView1.removeFromSuperview()
+            backgroundImageView1 = nil
+        }
+        if(backgroundImageView2 != nil){
+            backgroundImageView2.removeFromSuperview()
+            backgroundImageView2 = nil
+        }
+        
     }
     
     @IBAction func passwordResetButtonClicked()
@@ -61,16 +81,25 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     func animateBackground() {
-        let backgroundImage = UIImage(named:"backgroundPattern.png")!
-        let amountToKeepImageSquare = backgroundImage.size.height - self.view.frame.size.height
+        backgroundImage = UIImage(named:"backgroundPattern.png")!
+        let amountToKeepImageSquare = (backgroundImage.size.height - self.view.frame.size.height)
         
         // UIImageView 1
-        let backgroundImageView1 = UIImageView(image: backgroundImage)
+        if(backgroundImageView1 != nil){
+            backgroundImageView1.removeFromSuperview()
+            backgroundImageView1 = nil
+        }
+        if(backgroundImageView2 != nil){
+            backgroundImageView2.removeFromSuperview()
+            backgroundImageView2 = nil
+        }
+        
+        backgroundImageView1 = UIImageView(image: backgroundImage)
         backgroundImageView1.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: backgroundImage.size.width - amountToKeepImageSquare, height: self.view.frame.size.height)
         self.view.addSubview(backgroundImageView1)
         
         // UIImageView 2
-        let backgroundImageView2 = UIImageView(image: backgroundImage)
+        backgroundImageView2 = UIImageView(image: backgroundImage)
         backgroundImageView2.frame = CGRect(x: backgroundImageView1.frame.size.width, y: self.view.frame.origin.y, width: backgroundImage.size.width - amountToKeepImageSquare, height: self.view.frame.height)
         self.view.addSubview(backgroundImageView2)
         
@@ -79,8 +108,8 @@ class ForgotPasswordViewController: UIViewController {
         
         // Animate background
         UIView.animateWithDuration(15, delay: 0.0, options: [.Repeat, .CurveLinear], animations: {
-            backgroundImageView1.frame = CGRectOffset(backgroundImageView1.frame, -1 * backgroundImageView1.frame.size.width, 0.0)
-            backgroundImageView2.frame = CGRectOffset(backgroundImageView2.frame, -1 * backgroundImageView2.frame.size.width, 0.0)
+            self.backgroundImageView1.frame = CGRectOffset(self.backgroundImageView1.frame, -1 * self.backgroundImageView1.frame.size.width, 0.0)
+            self.backgroundImageView2.frame = CGRectOffset(self.backgroundImageView2.frame, -1 * self.backgroundImageView2.frame.size.width, 0.0)
             }, completion: nil)
     }
 
