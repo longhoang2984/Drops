@@ -3,9 +3,8 @@ New app to help people lift their mood/spirit
 
 <h2>To Do for Minimum Viable Product:</h2>
 <ul>
-<li>make clouds float from right to left in the background of login views</li>
 
-<li>make images from user focus/zoom on face</li>
+<li>make images from user focus/zoom on face (face detection)</li>
 
 <li>create animations for different weather types on update screen</li>
 
