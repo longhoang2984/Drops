@@ -23,6 +23,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.updateHistoryData.removeAllObjects()
+        
         let currentUser = PFUser.currentUser()
         
         // Get the weather updates
