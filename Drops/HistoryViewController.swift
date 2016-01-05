@@ -25,6 +25,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.updateHistoryData.removeAllObjects()
         
+        performSelectorInBackground("getWeatherUpdates", withObject: nil)
+        
+
+    }
+    
+    func getWeatherUpdates() {
         let currentUser = PFUser.currentUser()
         
         // Get the weather updates
@@ -53,7 +59,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         sleep(3)
         
         do_table_refresh()
-
+        
     }
     
     //reload tableview
