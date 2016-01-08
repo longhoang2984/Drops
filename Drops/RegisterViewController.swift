@@ -219,7 +219,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.view.sendSubviewToBack(backgroundImageView2)
         
         // Animate background
-        UIView.animateWithDuration(15, delay: 0.0, options: [.Repeat, .CurveLinear], animations: {
+        UIView.animateWithDuration(20, delay: 0.0, options: [.Repeat, .CurveLinear], animations: {
             self.backgroundImageView1.frame = CGRectOffset(self.backgroundImageView1.frame, -1 * self.backgroundImageView1.frame.size.width, 0.0)
             self.backgroundImageView2.frame = CGRectOffset(self.backgroundImageView2.frame, -1 * self.backgroundImageView2.frame.size.width, 0.0)
             }, completion: nil)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class MessagesViewController: UIViewController {
     
@@ -15,14 +16,55 @@ class MessagesViewController: UIViewController {
     let boxSize : CGFloat = 50.0
     var boxes : Array<UIView> = []
     
+    var messageCount:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         maxX = super.view.bounds.size.width - boxSize
         maxY = super.view.bounds.size.height - boxSize
 
         createAnimatorStuff()
-        generateBoxes()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // get latest user data
+        PFUser.currentUser()?.fetchInBackground()
+    }
+    
+    func getMessages() {
+        let currentUser = PFUser.currentUser()
+        let messagesInbox = currentUser!["messagesInbox"]
+        
+        let query = PFQuery(className: "Message")
+        query.whereKey("objectId", containedIn: (messagesInbox as? [PFObject])!)
+        query.includeKey("author")
+        query.findObjectsInBackgroundWithBlock {
+            (results: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+
+                self.messageCount = (results?.count)!
+                print(results)
+
+                // let userDataQuery = PFQuery(className: "User")
+                // userDataQuery.whereKey(<#T##key: String##String#>, containedIn: <#T##[AnyObject]#>)
+                
+                print("\(self.messageCount) boxes")
+                for i in 0..<self.messageCount {
+                    let frame = self.randomFrame()
+                    let color = self.randomColor()
+                    let newBox = self.addBox(frame, color: color)
+                }
+            }
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        getMessages()
     }
     
     func randomColor() -> UIColor {
@@ -68,13 +110,14 @@ class MessagesViewController: UIViewController {
         return newBox
     }
     
-    func generateBoxes() {
-        for i in 0..<10 {
-            let frame = randomFrame()
-            let color = randomColor()
-            let newBox = addBox(frame, color: color)
-        }
-    }
+//    func generateBoxes() {
+//        print("\(self.messageCount) boxes")
+//        for i in 0..<messageCount {
+//            let frame = randomFrame()
+//            let color = randomColor()
+//            let newBox = addBox(frame, color: color)
+//        }
+//    }
     
     //----------------- UIDynamicAllocator
     

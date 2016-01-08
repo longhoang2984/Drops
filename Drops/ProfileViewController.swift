@@ -27,8 +27,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currentUser = PFUser.currentUser()
-        
         self.formView.alpha = 0
         
         self.totalUpdatesLabel.text = ""
@@ -42,6 +40,8 @@ class ProfileViewController: UIViewController {
         self.formView.clipsToBounds = true;
         
         self.formView.fadeIn()
+        
+        let currentUser = PFUser.currentUser()
         
         // Get the latest weather update
         let currentMood = PFQuery(className: "WeatherUpdate")
@@ -105,13 +105,13 @@ class ProfileViewController: UIViewController {
                     }
                 }
                 
-                self.usernameLabel.text = object!["username"] as? String
-                
-                self.userProfileTextLabel.text = object!["profileText"] as? String
-                
-                print("Successfully retrieved the user info.")
+                print("Successfully retrieved the user image.")
             }
         }
+        
+        self.usernameLabel.text = currentUser!["username"] as? String
+        
+        self.userProfileTextLabel.text = currentUser!["profileText"] as? String
 
     }
     
@@ -119,6 +119,7 @@ class ProfileViewController: UIViewController {
         super.viewDidAppear(animated)
         animateBackground()
     }
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -162,7 +163,7 @@ class ProfileViewController: UIViewController {
         self.view.sendSubviewToBack(backgroundImageView2)
         
         // Animate background
-        UIView.animateWithDuration(15, delay: 0.0, options: [.Repeat, .CurveLinear], animations: {
+        UIView.animateWithDuration(20, delay: 0.0, options: [.Repeat, .CurveLinear], animations: {
             self.backgroundImageView1.frame = CGRectOffset(self.backgroundImageView1.frame, -1 * self.backgroundImageView1.frame.size.width, 0.0)
             self.backgroundImageView2.frame = CGRectOffset(self.backgroundImageView2.frame, -1 * self.backgroundImageView2.frame.size.width, 0.0)
             }, completion: nil)
