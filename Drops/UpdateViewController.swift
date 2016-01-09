@@ -45,6 +45,10 @@ class UpdateViewController: UIViewController {
     
     @IBAction func longPressed(sender: UILongPressGestureRecognizer) {
         
+        springWithDelay(0.9, delay: 0.45, animations: {
+            self.moodImageView.transform = CGAffineTransformMakeTranslation(0, 0)
+        })
+        
         if (sender.state == UIGestureRecognizerState.Ended) {
             print("Long Press Ended")
             // self.timer!.invalidate()
@@ -52,22 +56,27 @@ class UpdateViewController: UIViewController {
             if self.longPressLabel.text == "Sunny" {
                 print("Sunny")
                 weatherValue = 1
+                startAnimatingFaces()
                 
             } else if self.longPressLabel.text == "Partly Cloudy" {
                 print("Partly Cloudy")
                 weatherValue = 2
+                startAnimatingFaces()
                 
             } else if self.longPressLabel.text == "Cloudy" {
                 print("Cloudy")
                 weatherValue = 3
+                startAnimatingFaces()
                 
             } else if self.longPressLabel.text == "Raining" {
                 print("Raining")
                 weatherValue = 4
+                startAnimatingFaces()
                 
             } else if self.longPressLabel.text == "Thunderstorm" {
                 print("Thunderstorm")
                 weatherValue = 5
+                startAnimatingFaces()
                 
             }
             
@@ -81,7 +90,6 @@ class UpdateViewController: UIViewController {
             print("Long Press Began")
             
             self.startAnimatingLabel()
-            self.startAnimatingFaces()
         }
     }
     

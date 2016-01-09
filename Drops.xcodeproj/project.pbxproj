@@ -46,6 +46,7 @@
 		55641A891C350AC90030390B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55641A881C350AC90030390B /* MessagesViewController.swift */; };
 		5572F6861C345AD8008C4906 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572F6851C345AD8008C4906 /* HistoryTableViewCell.swift */; };
 		557881A51C21FA6F0042E30B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557881A41C21FA6F0042E30B /* SettingsViewController.swift */; };
+		5580A4431C41D638004C5C55 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5580A4421C41D638004C5C55 /* SpringAnimation.swift */; };
 		55BF1CA31C263C15009F3657 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55BF1CA11C263C15009F3657 /* Nunito-Bold.ttf */; };
 		55BF1CA41C263C15009F3657 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55BF1CA21C263C15009F3657 /* Nunito-Regular.ttf */; };
 		55C4CB3A1C1BA6A400940390 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4CB391C1BA6A400940390 /* User.swift */; };
@@ -134,6 +135,7 @@
 		55641A881C350AC90030390B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		5572F6851C345AD8008C4906 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		557881A41C21FA6F0042E30B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5580A4421C41D638004C5C55 /* SpringAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringAnimation.swift; sourceTree = "<group>"; };
 		55BF1CA11C263C15009F3657 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		55BF1CA21C263C15009F3657 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		55C4CB391C1BA6A400940390 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 			children = (
 				55C4CB391C1BA6A400940390 /* User.swift */,
 				550A54211C1D454F00B33DD1 /* Message.swift */,
+				5580A4421C41D638004C5C55 /* SpringAnimation.swift */,
 				550A54231C1D4E2A00B33DD1 /* WeatherUpdate.swift */,
 				550A54251C1D5B6D00B33DD1 /* Global.swift */,
 				55E29A0B1C2BB89C00634573 /* UIViewExtensions.swift */,
@@ -630,6 +633,7 @@
 				5543D10F1C2491D500734DF4 /* IQToolbar.swift in Sources */,
 				550A54241C1D4E2A00B33DD1 /* WeatherUpdate.swift in Sources */,
 				55C4CB3A1C1BA6A400940390 /* User.swift in Sources */,
+				5580A4431C41D638004C5C55 /* SpringAnimation.swift in Sources */,
 				5543D1091C2491D500734DF4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				5543D1101C2491D500734DF4 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				5543D1071C2491D500734DF4 /* IQUIWindow+Hierarchy.swift in Sources */,
