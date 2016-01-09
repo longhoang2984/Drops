@@ -17,8 +17,7 @@ public class User: PFUser {
     @NSManaged public var messagesInbox: [String]!
     
     // Create new user
-    init(username: String, password: String, email: String, image: UIImage, profileText: String, messagesInbox: [String])
-    {
+    init(username: String, password: String, email: String, image: UIImage, profileText: String, messagesInbox: [String]) {
         super.init()
         
         let imageFile = createFileFrom(image)
@@ -28,12 +27,10 @@ public class User: PFUser {
         self.email = email
         self.password = password
         self.profileText = profileText
-        self.messagesInbox = messagesInbox
-        
+        self.messagesInbox = [String]()
     }
     
-    override init()
-    {
+    override init() {
         super.init()
     }
     
@@ -44,19 +41,10 @@ public class User: PFUser {
         struct Static {
             static var onceToken: dispatch_once_t = 0
         }
+        
         dispatch_once(&Static.onceToken) {
             self.registerSubclass()
         }
     }
     
-//    let relation = self.user!.relationForKey("createdMessages")
-//    relation.addObject(newMessage)
-//    self.user!.saveInBackgroundWithBlock {
-//    (success: Bool, error: NSError?) -> Void in
-//    if (success) {
-//    // The post has been added to the user's likes relation.
-//    } else {
-//    // There was a problem, check error.description
-//    }
-//    }
 }

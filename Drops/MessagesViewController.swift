@@ -13,60 +13,68 @@ class MessagesViewController: UIViewController {
     
     var maxX : CGFloat = 320
     var maxY : CGFloat = 320
-    let boxSize : CGFloat = 50.0
-    var boxes : Array<UIView> = []
+    let dropSize : CGFloat = 50.0
+    var drops : Array<UIView> = []
     
-    var messageCount:Int = 0
+    private var messages = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        maxX = super.view.bounds.size.width - boxSize
-        maxY = super.view.bounds.size.height - boxSize
+        maxX = super.view.bounds.size.width - dropSize
+        maxY = super.view.bounds.size.height / 4
 
         createAnimatorStuff()
+        getMessages()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         // get latest user data
-        PFUser.currentUser()?.fetchInBackground()
+        User.currentUser()?.fetchInBackground()
     }
     
     func getMessages() {
-        let currentUser = PFUser.currentUser()
-        let messagesInbox = currentUser!["messagesInbox"]
         
-        let query = PFQuery(className: "Message")
-        query.whereKey("objectId", containedIn: (messagesInbox as? [PFObject])!)
-        query.includeKey("author")
-        query.findObjectsInBackgroundWithBlock {
-            (results: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-
-                self.messageCount = (results?.count)!
-                print(results)
-
-                // let userDataQuery = PFQuery(className: "User")
-                // userDataQuery.whereKey(<#T##key: String##String#>, containedIn: <#T##[AnyObject]#>)
-                
-                print("\(self.messageCount) boxes")
-                for i in 0..<self.messageCount {
-                    let frame = self.randomFrame()
-                    let color = self.randomColor()
-                    let newBox = self.addBox(frame, color: color)
+        let currentUser = User.currentUser()!
+        let messagesInbox = currentUser.messagesInbox
+        print(messagesInbox)
+        if messagesInbox.count > 0 {
+            let messagesQuery = PFQuery(className: Message.parseClassName())
+            messagesQuery.whereKey("objectId", containedIn: messagesInbox)
+            messagesQuery.includeKey("author")
+            
+            messagesQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil {
+                    if let messageObjects = objects {
+                        self.messages.removeAll()
+                        for messageObject in messageObjects {
+                            let message = messageObject as! Message
+                            self.messages.append(message)
+                            
+                            let author = messageObject["author"] as! PFObject
+                            print(author)
+                        
+                            let frame = self.randomFrame()
+                            let color = self.randomColor()
+                            let newDrop = self.addDrop(frame, color: color)
+                        }
+                        
+                        print(self.messages)
+                        print("\(self.messages.count) drops")
+                    }
+                } else {
+                    print("\(error!.localizedDescription)")
                 }
-            }
+            })
+            
         }
+
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        getMessages()
-    }
-    
+    // random color for drop. need to replace random color with mseeage author profile pic
     func randomColor() -> UIColor {
         let red = CGFloat(CGFloat(arc4random()%100000)/100000)
         let green = CGFloat(CGFloat(arc4random()%100000)/100000)
@@ -76,8 +84,8 @@ class MessagesViewController: UIViewController {
     }
     
     func doesNotCollide(testRect: CGRect) -> Bool {
-        for box : UIView in boxes {
-            let viewRect = box.frame
+        for drop : UIView in drops {
+            let viewRect = drop.frame
             if(CGRectIntersectsRect(testRect, viewRect)) {
                 return false
             }
@@ -91,33 +99,25 @@ class MessagesViewController: UIViewController {
         repeat {
             let guessX = CGFloat(arc4random()) % maxX
             let guessY = CGFloat(arc4random()) % maxY
-            guess = CGRectMake(guessX, guessY, boxSize, boxSize)
+            guess = CGRectMake(guessX, guessY, dropSize, dropSize)
         } while(!doesNotCollide(guess))
         
         return guess
     }
     
-    func addBox(location: CGRect, color: UIColor) -> UIView {
-        let newBox = UIView(frame: location)
-        newBox.layer.cornerRadius = 25.0
-        newBox.layer.borderWidth = 0.0
-        newBox.clipsToBounds = true
-        newBox.backgroundColor = color
+    // need to make drops round
+    func addDrop(location: CGRect, color: UIColor) -> UIView {
+        let addDrop = UIView(frame: location)
+        addDrop.layer.cornerRadius = 25.0
+        addDrop.layer.borderWidth = 0.0
+        addDrop.clipsToBounds = true
+        addDrop.backgroundColor = color
         
-        view.addSubview(newBox)
-        addBoxToBehaviors(newBox)
-        boxes.append(newBox)
-        return newBox
+        view.addSubview(addDrop)
+        addDropToBehaviors(addDrop)
+        drops.append(addDrop)
+        return addDrop
     }
-    
-//    func generateBoxes() {
-//        print("\(self.messageCount) boxes")
-//        for i in 0..<messageCount {
-//            let frame = randomFrame()
-//            let color = randomColor()
-//            let newBox = addBox(frame, color: color)
-//        }
-//    }
     
     //----------------- UIDynamicAllocator
     
@@ -148,10 +148,10 @@ class MessagesViewController: UIViewController {
         animator?.addBehavior(itemBehavior)
     }
     
-    func addBoxToBehaviors(box: UIView) {
-        gravity.addItem(box)
-        collider.addItem(box)
-        itemBehavior.addItem(box)
+    func addDropToBehaviors(drop: UIView) {
+        gravity.addItem(drop)
+        collider.addItem(drop)
+        itemBehavior.addItem(drop)
     }
     
 }

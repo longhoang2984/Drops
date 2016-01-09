@@ -15,20 +15,12 @@ public class Message: PFObject, PFSubclassing {
     @NSManaged public var author: PFUser! // must use PFUser
     @NSManaged public var messageText: String!
     
-    // MARK: - Create new weatherUpdate
+    // MARK: - Create new message
     init(author: PFUser, messageText: String) {
         super.init()
         self.author = author
         self.messageText = messageText
     }
-    
-//    public func report() {
-//        let currentUserObjectId = User.currentUser()!.objectId!
-//        if !reportedBy.contains(currentUserObjectId) {
-//            reportedBy.insert(currentUserObjectId, atIndex: 0)
-//            self.saveInBackground()
-//        }
-//    }
     
     override init()
     {

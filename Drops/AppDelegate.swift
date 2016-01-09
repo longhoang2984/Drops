@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         
         // register PFObject subclasses
+        User.initialize()
         Message.initialize()
         WeatherUpdate.initialize()
         

@@ -21,7 +21,7 @@ class UpdateViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Check to see if a user is logged in
-        let currentUser = PFUser.currentUser()
+        let currentUser = User.currentUser()
         if currentUser != nil {
             // Do stuff with the user
             print("User is logged in, send to update screen")
@@ -64,34 +64,7 @@ class UpdateViewController: UIViewController {
                 
             }
             
-            let newWeatherUpdate = WeatherUpdate(author: PFUser.currentUser()!, weatherValue: weatherValue!)
-            newWeatherUpdate.saveInBackgroundWithBlock { (success, error) -> Void in
-                if error == nil {
-                    print("Post Update to parse successful")
-                    
-                    if self.weatherValue <= 2 {
-                        // If user is having a great/good day ask if they want to add a drop
-                        let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! Would you like to send a Drop?", preferredStyle: .Alert)
-                        let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> () in
-                            self.performSegueWithIdentifier("MessageSegueIdentifier", sender: self)
-                        })
-                        let noButton = UIAlertAction(title: "No", style: .Cancel, handler: nil)
-                        postSuccessAlert.addAction(yesButton)
-                        postSuccessAlert.addAction(noButton)
-                        self.presentViewController(postSuccessAlert, animated: true, completion: nil)
-                        
-                    } else {
-                        // If user is having a bad day tell them drops are coming
-                        let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! You are amazing! Drops will be sent shortly. :)", preferredStyle: .Alert)
-                        let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
-                        postSuccessAlert.addAction(okButton)
-                        self.presentViewController(postSuccessAlert, animated: true, completion: nil)
-                    }
-                    
-                } else {
-                    print("\(error?.localizedDescription)")
-                }
-            }
+            createNewWeatherUpdate()
             
             self.longPressLabel.text = "tap and hold to update"
             self.timer!.invalidate()
@@ -100,6 +73,38 @@ class UpdateViewController: UIViewController {
             print("Long Press Began")
             
             self.startAnimatingLabel()
+        }
+    }
+    
+    func createNewWeatherUpdate() {
+        
+        let newWeatherUpdate = WeatherUpdate(author: User.currentUser()!, weatherValue: weatherValue!)
+        newWeatherUpdate.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil {
+                print("Post Update to parse successful")
+                
+                if self.weatherValue <= 2 {
+                    // If user is having a great/good day ask if they want to add a drop
+                    let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! Would you like to send a Drop?", preferredStyle: .Alert)
+                    let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> () in
+                        self.performSegueWithIdentifier("MessageSegueIdentifier", sender: self)
+                    })
+                    let noButton = UIAlertAction(title: "No", style: .Cancel, handler: nil)
+                    postSuccessAlert.addAction(yesButton)
+                    postSuccessAlert.addAction(noButton)
+                    self.presentViewController(postSuccessAlert, animated: true, completion: nil)
+                    
+                } else {
+                    // If user is having a bad day tell them drops are coming
+                    let postSuccessAlert = UIAlertController(title: "Success!", message: "Your post has been added! You are amazing! Drops will be sent shortly. :)", preferredStyle: .Alert)
+                    let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                    postSuccessAlert.addAction(okButton)
+                    self.presentViewController(postSuccessAlert, animated: true, completion: nil)
+                }
+                
+            } else {
+                print("\(error?.localizedDescription)")
+            }
         }
     }
     

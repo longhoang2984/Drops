@@ -22,8 +22,7 @@ public class WeatherUpdate: PFObject, PFSubclassing {
         self.weatherValue = weatherValue
     }
     
-    override init()
-    {
+    override init() {
         super.init()
     }
     

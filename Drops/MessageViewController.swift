@@ -17,7 +17,7 @@ class MessageViewController: UIViewController, UITextFieldDelegate {
     
     private var messageText: String?
     
-    let user = PFUser.currentUser()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class MessageViewController: UIViewController, UITextFieldDelegate {
     @IBAction func messageButtonClicked() {
         
         let messageText = messageTextField.text!
-        let newMessage = Message(author: user!, messageText: messageText)
+        let newMessage = Message(author: User.currentUser()!, messageText: messageText)
         newMessage.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
                 print("Post Drop to parse successful")
