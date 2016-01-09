@@ -9,6 +9,12 @@
 import UIKit
 import Parse
 
+//
+// Goal for this viewcontroller is to have the user tap and hold to select how they are currently feeling.
+// If the user is in a good mood we want them to add a message for others who are not in a good mood.
+// If the user is having a bad day we want them to start receiving drops in their messages screen.
+//
+
 class UpdateViewController: UIViewController {
     
     @IBOutlet var longPressLabel: UILabel!

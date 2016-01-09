@@ -6,6 +6,11 @@
 //  Copyright © 2015 Josh Lopez. All rights reserved.
 //
 
+//
+// Goal for this viewcontroller is to have the user add a positive message 
+// to other users who are having a bad day.
+//
+
 import UIKit
 import Parse
 

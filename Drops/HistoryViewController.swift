@@ -6,6 +6,12 @@
 //  Copyright © 2015 Josh Lopez. All rights reserved.
 //
 
+//
+// Goal for this viewcontroller is to show the current user their own weatherUpdates.
+// We want the user to be able to delete accidental weatherUpdates.
+// Eventually we want to have a segmented control show (Today|Week|Month|Year) averages
+//
+
 import UIKit
 import Parse
 

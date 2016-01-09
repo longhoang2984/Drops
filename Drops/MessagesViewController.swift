@@ -6,6 +6,12 @@
 //  Copyright © 2015 Josh Lopez. All rights reserved.
 //
 
+//
+// Goal for this viewcontroller is to have drops/messages in the currentusers messagesInbox
+// fall from clouds while the clouds disapear. The drops/messages will have the message author image
+// and when tapped it opens up the message. When the message is closed the drop will pop and be deleted.
+//
+
 import UIKit
 import Parse
 

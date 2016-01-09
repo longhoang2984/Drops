@@ -6,6 +6,13 @@
 //  Copyright © 2015 Josh Lopez. All rights reserved.
 //
 
+//
+// Goal for this viewcontroller is to show the current user their profile and total activity.
+// We want to allow them to edit their username, profiletext, and userProfileImage.
+// In the future we want to have seasonal profile text challenges where we send a mass
+// push notification to change their profile text to tell different stories.
+//
+
 import UIKit
 import Parse
 
