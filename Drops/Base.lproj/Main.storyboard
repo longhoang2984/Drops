@@ -312,18 +312,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap and hold to update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a0-ke-Oj7">
-                                <rect key="frame" x="210" y="289" width="180" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="press and hold to add update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a0-ke-Oj7">
+                                <rect key="frame" x="184" y="289" width="232" height="23"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YvQ-Hm-9Ot">
+                                <rect key="frame" x="275" y="219" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="bK6-bH-JiH"/>
+                                    <constraint firstAttribute="height" constant="50" id="fgT-pR-tqL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="8a0-ke-Oj7" firstAttribute="top" secondItem="YvQ-Hm-9Ot" secondAttribute="bottom" constant="20" id="Oyh-9z-7V6"/>
                             <constraint firstItem="8a0-ke-Oj7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qPJ-lj-rqd"/>
                             <constraint firstItem="8a0-ke-Oj7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rOf-OT-MzJ"/>
+                            <constraint firstItem="YvQ-Hm-9Ot" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wHt-ME-Uw3"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="XLf-fh-TkJ" appends="YES" id="fkk-2V-1gx"/>
@@ -332,6 +341,7 @@
                     <tabBarItem key="tabBarItem" title="Update" id="XIE-ka-X1R"/>
                     <connections>
                         <outlet property="longPressLabel" destination="8a0-ke-Oj7" id="4mk-CY-Oqb"/>
+                        <outlet property="moodImageView" destination="YvQ-Hm-9Ot" id="Svn-eI-PS2"/>
                         <segue destination="qsx-pV-AwP" kind="presentation" identifier="LoginSegueIdentifier" id="Lxr-GM-O28"/>
                         <segue destination="EeZ-Fn-pEW" kind="presentation" identifier="MessageSegueIdentifier" id="ZZ5-dO-Rr6"/>
                     </connections>

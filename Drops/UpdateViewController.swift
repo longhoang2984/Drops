@@ -18,6 +18,7 @@ import Parse
 class UpdateViewController: UIViewController {
     
     @IBOutlet var longPressLabel: UILabel!
+    @IBOutlet var moodImageView: UIImageView!
     
     private var weatherValue: Int?
     
@@ -73,12 +74,14 @@ class UpdateViewController: UIViewController {
             createNewWeatherUpdate()
             
             self.longPressLabel.text = "tap and hold to update"
+            self.moodImageView.image = nil
             self.timer!.invalidate()
             
         } else if (sender.state == UIGestureRecognizerState.Began) {
             print("Long Press Began")
             
             self.startAnimatingLabel()
+            self.startAnimatingFaces()
         }
     }
     
@@ -131,11 +134,32 @@ class UpdateViewController: UIViewController {
         
             ++i
         }
+        
     }
     
     func startAnimatingLabel() {
         self.longPressLabel.text = weatherStrings.first
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: ("animateLabel"), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: ("animateLabel"), userInfo: nil, repeats: true)
+    }
+    
+    // need to figure out how to get these to run through while the label is changing.
+    func startAnimatingFaces() {
+        if self.longPressLabel.text == "Sunny" {
+            moodImageView.image = UIImage(named:"Big Smile Face")!
+            
+        } else if self.longPressLabel.text == "Partly Cloudy" {
+            moodImageView.image = UIImage(named:"Happy Face")!
+            print("test")
+            
+        } else if self.longPressLabel.text == "Cloudy" {
+            moodImageView.image = UIImage(named:"Sad Face")!
+            
+        } else if self.longPressLabel.text == "Raining" {
+            moodImageView.image = UIImage(named:"Crying Face")!
+            
+        } else if self.longPressLabel.text == "Thunderstorm" {
+            moodImageView.image = UIImage(named:"Angry Face")!
+        }
     }
     
 }
