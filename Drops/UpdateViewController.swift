@@ -51,32 +51,26 @@ class UpdateViewController: UIViewController {
         
         if (sender.state == UIGestureRecognizerState.Ended) {
             print("Long Press Ended")
-            // self.timer!.invalidate()
             
             if self.longPressLabel.text == "Sunny" {
                 print("Sunny")
                 weatherValue = 1
-                startAnimatingFaces()
                 
             } else if self.longPressLabel.text == "Partly Cloudy" {
                 print("Partly Cloudy")
                 weatherValue = 2
-                startAnimatingFaces()
                 
             } else if self.longPressLabel.text == "Cloudy" {
                 print("Cloudy")
                 weatherValue = 3
-                startAnimatingFaces()
                 
             } else if self.longPressLabel.text == "Raining" {
                 print("Raining")
                 weatherValue = 4
-                startAnimatingFaces()
                 
             } else if self.longPressLabel.text == "Thunderstorm" {
                 print("Thunderstorm")
                 weatherValue = 5
-                startAnimatingFaces()
                 
             }
             
@@ -137,6 +131,9 @@ class UpdateViewController: UIViewController {
                 }
             
             self.longPressLabel.text = weatherStrings[i]
+            self.moodImageView.image = UIImage(named: "\(longPressLabel.text!)")
+            print(longPressLabel.text)
+                
             break
             }
         
@@ -148,26 +145,6 @@ class UpdateViewController: UIViewController {
     func startAnimatingLabel() {
         self.longPressLabel.text = weatherStrings.first
         self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: ("animateLabel"), userInfo: nil, repeats: true)
-    }
-    
-    // need to figure out how to get these to run through while the label is changing.
-    func startAnimatingFaces() {
-        if self.longPressLabel.text == "Sunny" {
-            moodImageView.image = UIImage(named:"Big Smile Face")!
-            
-        } else if self.longPressLabel.text == "Partly Cloudy" {
-            moodImageView.image = UIImage(named:"Happy Face")!
-            print("test")
-            
-        } else if self.longPressLabel.text == "Cloudy" {
-            moodImageView.image = UIImage(named:"Sad Face")!
-            
-        } else if self.longPressLabel.text == "Raining" {
-            moodImageView.image = UIImage(named:"Crying Face")!
-            
-        } else if self.longPressLabel.text == "Thunderstorm" {
-            moodImageView.image = UIImage(named:"Angry Face")!
-        }
     }
     
 }
