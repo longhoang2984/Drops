@@ -129,14 +129,13 @@ class UpdateViewController: UIViewController {
                 if i == weatherStrings.count {
                     i = 0
                 }
-            
-            self.longPressLabel.text = weatherStrings[i]
-            self.moodImageView.image = UIImage(named: "\(longPressLabel.text!)")
-            print(longPressLabel.text)
                 
-            break
+                self.longPressLabel.text = weatherStrings[i]
+                self.moodImageView.image = UIImage(named: "\(longPressLabel.text!)")
+                print(longPressLabel.text)
+                break
             }
-        
+            
             ++i
         }
         
@@ -145,6 +144,7 @@ class UpdateViewController: UIViewController {
     func startAnimatingLabel() {
         self.longPressLabel.text = weatherStrings.first
         self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: ("animateLabel"), userInfo: nil, repeats: true)
+        self.moodImageView.image = UIImage(named: "\(longPressLabel.text!)")
     }
     
 }
