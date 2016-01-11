@@ -18,11 +18,15 @@ import Parse
 class UpdateViewController: UIViewController {
     
     @IBOutlet var longPressLabel: UILabel!
+    @IBOutlet var longPressSpringLabel: SpringLabel!
     @IBOutlet var moodImageView: UIImageView!
+    @IBOutlet var moodSpringImageView: SpringImageView!
+    @IBOutlet var sunSpringImageView: SpringImageView!
     
     private var weatherValue: Int?
     
     var timer: NSTimer?
+    var count = 0
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,51 +45,52 @@ class UpdateViewController: UIViewController {
         }
         
     }
-
     
     @IBAction func longPressed(sender: UILongPressGestureRecognizer) {
         
-        springWithDelay(0.9, delay: 0.45, animations: {
-            self.moodImageView.transform = CGAffineTransformMakeTranslation(0, 0)
-        })
-        
         if (sender.state == UIGestureRecognizerState.Ended) {
             print("Long Press Ended")
-            
-            if self.longPressLabel.text == "Sunny" {
-                print("Sunny")
-                weatherValue = 1
-                
-            } else if self.longPressLabel.text == "Partly Cloudy" {
-                print("Partly Cloudy")
-                weatherValue = 2
-                
-            } else if self.longPressLabel.text == "Cloudy" {
-                print("Cloudy")
-                weatherValue = 3
-                
-            } else if self.longPressLabel.text == "Raining" {
-                print("Raining")
-                weatherValue = 4
-                
-            } else if self.longPressLabel.text == "Thunderstorm" {
-                print("Thunderstorm")
-                weatherValue = 5
-                
-            }
-            
-            createNewWeatherUpdate()
-            
-            self.longPressLabel.text = "tap and hold to update"
-            self.moodImageView.image = nil
             self.timer!.invalidate()
+            
+            if count > 0 {
+                weatherValue = count
+                createNewWeatherUpdate()
+            }
+
+            self.longPressLabel.text = "press and hold to add update"
+            longPressSpringLabel.animation = "fadeIn"
+            longPressSpringLabel.curve = "spring"
+            longPressSpringLabel.duration = 1
+            longPressSpringLabel.animate()
+            
+            sunSpringImageView.animation = "fall"
+            sunSpringImageView.curve = "spring"
+            sunSpringImageView.duration = 1
+            sunSpringImageView.animate()
+            
+            moodSpringImageView.alpha = 0
             
         } else if (sender.state == UIGestureRecognizerState.Began) {
             print("Long Press Began")
+            count = 0
             
-            self.startAnimatingLabel()
+            sunSpringImageView.hidden = false
+            sunSpringImageView.animation = "squeezeDown"
+            sunSpringImageView.curve = "spring"
+            sunSpringImageView.duration = 2
+            sunSpringImageView.animate()
+            
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: ("startCounter"), userInfo: nil, repeats: true)
+            
+            longPressSpringLabel.animation = "fadeOut"
+            longPressSpringLabel.curve = "spring"
+            longPressSpringLabel.duration = 1
+            longPressSpringLabel.animate()
+            
+            
         }
     }
+    
     
     func createNewWeatherUpdate() {
         
@@ -93,6 +98,7 @@ class UpdateViewController: UIViewController {
         newWeatherUpdate.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
                 print("Post Update to parse successful")
+                print(self.weatherValue)
                 
                 if self.weatherValue <= 2 {
                     // If user is having a great/good day ask if they want to add a drop
@@ -104,6 +110,7 @@ class UpdateViewController: UIViewController {
                     postSuccessAlert.addAction(yesButton)
                     postSuccessAlert.addAction(noButton)
                     self.presentViewController(postSuccessAlert, animated: true, completion: nil)
+                    self.count = 0
                     
                 } else {
                     // If user is having a bad day tell them drops are coming
@@ -111,40 +118,63 @@ class UpdateViewController: UIViewController {
                     let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
                     postSuccessAlert.addAction(okButton)
                     self.presentViewController(postSuccessAlert, animated: true, completion: nil)
+                    self.count = 0
                 }
                 
             } else {
                 print("\(error?.localizedDescription)")
+                self.count = 0
             }
         }
     }
     
-    // MARK: - Weather Animation
-    var weatherStrings = ["Sunny", "Partly Cloudy", "Cloudy", "Raining", "Thunderstorm"]
-    func animateLabel() {
-        var i = 0
-        for weatherString in weatherStrings {
-            if self.longPressLabel.text == weatherString {
-                ++i
-                if i == weatherStrings.count {
-                    i = 0
-                }
-                
-                self.longPressLabel.text = weatherStrings[i]
-                self.moodImageView.image = UIImage(named: "\(longPressLabel.text!)")
-                print(longPressLabel.text)
-                break
-            }
+    // MARK: - Animations and counter
+    func startCounter() {
+        count++
+        print(count)
+        if count == 5 {
             
-            ++i
+            self.longPressLabel.text = "Thunderstorm"
+            self.moodImageView.image = UIImage(named: "angry-face")
+            longPressSpringLabel.animation = "fadeInUp"
+            longPressSpringLabel.duration = 0.5
+            longPressSpringLabel.animate()
+            
+        } else if count == 4 {
+            self.longPressLabel.text = "Raining"
+            self.moodImageView.image = UIImage(named: "crying-face")
+            longPressSpringLabel.animation = "fadeInUp"
+            longPressSpringLabel.duration = 0.5
+            longPressSpringLabel.animate()
+            
+        } else if count == 3 {
+            self.longPressLabel.text = "Cloudy"
+            self.moodImageView.image = UIImage(named: "sad-face")
+            longPressSpringLabel.animation = "fadeInUp"
+            longPressSpringLabel.duration = 0.5
+            longPressSpringLabel.animate()
+            
+        } else if count == 2 {
+            self.longPressLabel.text = "Partly Cloudy"
+            self.moodImageView.image = UIImage(named: "smiley-face")
+            longPressSpringLabel.animation = "fadeInUp"
+            longPressSpringLabel.duration = 0.5
+            longPressSpringLabel.animate()
+            
+        } else if count == 1 {
+            self.longPressLabel.text = "Sunny"
+            self.moodImageView.image = UIImage(named: "happy-face")
+            longPressSpringLabel.animation = "fadeInUp"
+            longPressSpringLabel.duration = 0.5
+            longPressSpringLabel.animate()
+            
+        } else if count == 0 {
+            self.moodImageView.image = nil
+            
         }
         
-    }
-    
-    func startAnimatingLabel() {
-        self.longPressLabel.text = weatherStrings.first
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: ("animateLabel"), userInfo: nil, repeats: true)
-        self.moodImageView.image = UIImage(named: "\(longPressLabel.text!)")
+        moodSpringImageView.animation = "morph"
+        moodSpringImageView.animate()
     }
     
 }
