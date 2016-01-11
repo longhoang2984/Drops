@@ -133,12 +133,12 @@ class UpdateViewController: UIViewController {
         count++
         print(count)
         if count == 5 {
-            
             self.longPressLabel.text = "Thunderstorm"
             self.moodImageView.image = UIImage(named: "angry-face")
             longPressSpringLabel.animation = "fadeInUp"
             longPressSpringLabel.duration = 0.5
             longPressSpringLabel.animate()
+            count = 0
             
         } else if count == 4 {
             self.longPressLabel.text = "Raining"
