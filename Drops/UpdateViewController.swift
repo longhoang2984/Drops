@@ -232,7 +232,7 @@ class UpdateViewController: UIViewController {
         }
         
         moodSpringImageView.animation = "morph"
-        moodSpringImageView.duration = 0.8
+        moodSpringImageView.duration = 1
         moodSpringImageView.animate()
     }
     
