@@ -1,5 +1,10 @@
-# Drops
-New app to help people lift their mood/spirit
+#Drops
+<img src="https://github.com/devJoshLopez/Drops/blob/master/Drops/Assets.xcassets/AppIcon.appiconset/Icon-76@2x.png?raw=true" alt="Drops Logo" style="margin: 0 auto; display: block;"/>
+
+<h4>Drops is an app that helps people get out of bad day ruts. If you have ever had a bad day then this is the app for you. It keeps track of you good and bad days. On good days Drops asks you to give positive messages/Drops to people who are having a bad day, and on bad days you start receiving positive messages that will help shift your mindset so you can start smiling again.</h4>
+
+<a href="https://drive.google.com/file/d/0B4qdXXhllq-IT0d1VGFoRVU5dTQ/view?usp=sharing">Download Example PDF</a>
+Here is an old pdf to kind of get the idea. The new version of the app can be seen by downloading this and running it in xcode. I think the new version is much better!
 
 <h2>To Do for Minimum Viable Product:</h2>
 <ul>
