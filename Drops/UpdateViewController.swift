@@ -130,7 +130,7 @@ class UpdateViewController: UIViewController {
     
     // MARK: - Animations and counter
     func startCounter() {
-        count++
+        count = (count + 1)%6
         print(count)
         if count == 5 {
             self.longPressLabel.text = "Thunderstorm"
@@ -138,7 +138,6 @@ class UpdateViewController: UIViewController {
             longPressSpringLabel.animation = "fadeInUp"
             longPressSpringLabel.duration = 0.5
             longPressSpringLabel.animate()
-            count = 0
             
         } else if count == 4 {
             self.longPressLabel.text = "Raining"
