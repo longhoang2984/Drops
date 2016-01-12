@@ -312,6 +312,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9h-5N-tF0" customClass="SpringView" customModule="Drops" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.53725490196078429" green="0.5490196078431373" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightning-bolt" translatesAutoresizingMaskIntoConstraints="NO" id="7KY-w6-ZKo" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
+                                <rect key="frame" x="250" y="110" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="f5Z-iP-yt7"/>
+                                    <constraint firstAttribute="width" constant="100" id="wWH-po-PrC"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="Abk-2b-3vn" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
+                                <rect key="frame" x="180" y="60" width="50" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="Ucv-PZ-YbR"/>
+                                    <constraint firstAttribute="width" constant="50" id="qq5-cf-tss"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="ZQV-Vh-eYJ" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
+                                <rect key="frame" x="280" y="70" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9Dh-4u-4Q1"/>
+                                    <constraint firstAttribute="height" constant="50" id="nJt-YY-SYj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="41s-8u-jUZ" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
+                                <rect key="frame" x="383" y="70" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="H37-bc-qko"/>
+                                    <constraint firstAttribute="height" constant="25" id="xWv-Jq-Zdc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="press and hold to add update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a0-ke-Oj7" customClass="SpringLabel" customModule="Drops" customModuleProvider="target">
                                 <rect key="frame" x="184" y="289" width="232" height="23"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
@@ -341,7 +393,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun-icon" translatesAutoresizingMaskIntoConstraints="NO" id="YWA-CZ-sfJ" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun-icon" translatesAutoresizingMaskIntoConstraints="NO" id="YWA-CZ-sfJ" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
                                 <rect key="frame" x="250" y="20" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="0cO-JT-atc"/>
@@ -349,21 +401,71 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rotate">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud1" translatesAutoresizingMaskIntoConstraints="NO" id="QDk-SK-Io7" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
+                                <rect key="frame" x="150" y="30" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="lr6-oR-6al"/>
+                                    <constraint firstAttribute="height" constant="100" id="thG-AP-Ile"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud3" translatesAutoresizingMaskIntoConstraints="NO" id="o7r-7o-MgJ" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
+                                <rect key="frame" x="225" y="5" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="RdB-ha-mNa"/>
+                                    <constraint firstAttribute="height" constant="150" id="yPn-GU-MOv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud2" translatesAutoresizingMaskIntoConstraints="NO" id="S8Y-ti-aUX" customClass="SpringImageView" customModule="Drops" customModuleProvider="target">
+                                <rect key="frame" x="360" y="50" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="2dW-78-0VN"/>
+                                    <constraint firstAttribute="width" constant="75" id="xxm-Nu-8SM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="o7r-7o-MgJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="5" id="0zG-Z5-I35"/>
+                            <constraint firstItem="o7r-7o-MgJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2gd-Sb-S0c"/>
+                            <constraint firstItem="S8Y-ti-aUX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="7Lp-iN-Ck6"/>
+                            <constraint firstAttribute="trailing" secondItem="g9h-5N-tF0" secondAttribute="trailing" id="9uh-sp-Uaf"/>
+                            <constraint firstItem="YWA-CZ-sfJ" firstAttribute="leading" secondItem="QDk-SK-Io7" secondAttribute="trailing" id="Anr-gq-WGs"/>
                             <constraint firstItem="YWA-CZ-sfJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="Dnw-DD-VpR"/>
+                            <constraint firstItem="QDk-SK-Io7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="Hrk-ge-Vlw"/>
+                            <constraint firstItem="g9h-5N-tF0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IW8-nQ-lhS"/>
+                            <constraint firstAttribute="bottom" secondItem="g9h-5N-tF0" secondAttribute="bottom" id="Id9-uK-fbd"/>
+                            <constraint firstItem="YWA-CZ-sfJ" firstAttribute="leading" secondItem="QDk-SK-Io7" secondAttribute="trailing" id="Kx9-3U-HcU"/>
                             <constraint firstItem="8a0-ke-Oj7" firstAttribute="top" secondItem="YvQ-Hm-9Ot" secondAttribute="bottom" constant="20" id="Oyh-9z-7V6"/>
+                            <constraint firstItem="7KY-w6-ZKo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R6h-0L-ai8"/>
+                            <constraint firstItem="41s-8u-jUZ" firstAttribute="leading" secondItem="YWA-CZ-sfJ" secondAttribute="trailing" constant="33" id="UFd-gS-LHq"/>
+                            <constraint firstItem="ZQV-Vh-eYJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="XGL-S3-ivq"/>
+                            <constraint firstItem="g9h-5N-tF0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fJc-8d-2MU"/>
+                            <constraint firstItem="Abk-2b-3vn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="gGl-2U-OeN"/>
+                            <constraint firstItem="S8Y-ti-aUX" firstAttribute="leading" secondItem="YWA-CZ-sfJ" secondAttribute="trailing" constant="10" id="nCy-Xp-9mO"/>
                             <constraint firstItem="8a0-ke-Oj7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qPJ-lj-rqd"/>
+                            <constraint firstItem="41s-8u-jUZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="qdL-2f-Wjm"/>
                             <constraint firstItem="8a0-ke-Oj7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rOf-OT-MzJ"/>
+                            <constraint firstItem="7KY-w6-ZKo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="90" id="rTo-zU-TA2"/>
+                            <constraint firstItem="YWA-CZ-sfJ" firstAttribute="leading" secondItem="Abk-2b-3vn" secondAttribute="trailing" constant="20" id="uyf-dv-XvQ"/>
                             <constraint firstItem="YvQ-Hm-9Ot" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wHt-ME-Uw3"/>
                             <constraint firstItem="YWA-CZ-sfJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wyU-R4-FFy"/>
+                            <constraint firstItem="ZQV-Vh-eYJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="5" id="y8g-j7-wzv"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="XLf-fh-TkJ" appends="YES" id="fkk-2V-1gx"/>
@@ -371,10 +473,18 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Update" id="XIE-ka-X1R"/>
                     <connections>
+                        <outlet property="centerCloudSpringImage" destination="o7r-7o-MgJ" id="Obb-Aq-Gel"/>
+                        <outlet property="centerRainSpringImageView" destination="ZQV-Vh-eYJ" id="v0n-RC-b6I"/>
+                        <outlet property="greySpringView" destination="g9h-5N-tF0" id="WZt-Mm-2EE"/>
+                        <outlet property="leftCloudSpringImageView" destination="QDk-SK-Io7" id="3g8-ME-vi9"/>
+                        <outlet property="leftRainSpringImagView" destination="Abk-2b-3vn" id="PjR-hn-E3B"/>
+                        <outlet property="lightningBoltSpringImageView" destination="7KY-w6-ZKo" id="0vS-Dk-iHG"/>
                         <outlet property="longPressLabel" destination="8a0-ke-Oj7" id="4mk-CY-Oqb"/>
                         <outlet property="longPressSpringLabel" destination="8a0-ke-Oj7" id="p56-EQ-FqI"/>
                         <outlet property="moodImageView" destination="YvQ-Hm-9Ot" id="Svn-eI-PS2"/>
                         <outlet property="moodSpringImageView" destination="YvQ-Hm-9Ot" id="W7b-TA-src"/>
+                        <outlet property="rightCloudSpringImageView" destination="S8Y-ti-aUX" id="3RW-3q-Wbg"/>
+                        <outlet property="rightRainSpringImageView" destination="41s-8u-jUZ" id="tfb-Jn-1bN"/>
                         <outlet property="sunSpringImageView" destination="YWA-CZ-sfJ" id="3QI-X4-CQM"/>
                         <segue destination="qsx-pV-AwP" kind="presentation" identifier="LoginSegueIdentifier" id="Lxr-GM-O28"/>
                         <segue destination="EeZ-Fn-pEW" kind="presentation" identifier="MessageSegueIdentifier" id="ZZ5-dO-Rr6"/>
@@ -986,6 +1096,11 @@
         <image name="Drop" width="589" height="785"/>
         <image name="Drops-Text" width="361" height="129"/>
         <image name="DropsLogo" width="789" height="785"/>
+        <image name="cloud1" width="100" height="100"/>
+        <image name="cloud2" width="100" height="100"/>
+        <image name="cloud3" width="100" height="100"/>
+        <image name="lightning-bolt" width="100" height="100"/>
+        <image name="rain" width="100" height="100"/>
         <image name="sun-icon" width="100" height="100"/>
     </resources>
 </document>

@@ -22,6 +22,14 @@ class UpdateViewController: UIViewController {
     @IBOutlet var moodImageView: UIImageView!
     @IBOutlet var moodSpringImageView: SpringImageView!
     @IBOutlet var sunSpringImageView: SpringImageView!
+    @IBOutlet var leftCloudSpringImageView: SpringImageView!
+    @IBOutlet var centerCloudSpringImage: SpringImageView!
+    @IBOutlet var rightCloudSpringImageView: SpringImageView!
+    @IBOutlet var greySpringView: SpringView!
+    @IBOutlet var leftRainSpringImagView: SpringImageView!
+    @IBOutlet var centerRainSpringImageView: SpringImageView!
+    @IBOutlet var rightRainSpringImageView: SpringImageView!
+    @IBOutlet var lightningBoltSpringImageView: SpringImageView!
     
     private var weatherValue: Int?
     
@@ -50,26 +58,59 @@ class UpdateViewController: UIViewController {
         
         if (sender.state == UIGestureRecognizerState.Ended) {
             print("Long Press Ended")
+            
             self.timer!.invalidate()
             
-            if count > 0 {
-                weatherValue = count
-                createNewWeatherUpdate()
-            }
-
             self.longPressLabel.text = "press and hold to add update"
             longPressSpringLabel.animation = "fadeIn"
             longPressSpringLabel.curve = "spring"
             longPressSpringLabel.duration = 1
             longPressSpringLabel.animate()
             
+            leftRainSpringImagView.alpha = 0
+            centerRainSpringImageView.alpha = 0
+            rightRainSpringImageView.alpha = 0
+            lightningBoltSpringImageView.alpha = 0
+            
+            if count > 0 {
+                weatherValue = count
+                createNewWeatherUpdate()
+                
+                moodSpringImageView.animation = "fadeOut"
+                moodSpringImageView.animate()
+            }
+            
+            if count > 1 {
+                leftCloudSpringImageView.animation = "fadeOut"
+                leftCloudSpringImageView.duration = 0.5
+                leftCloudSpringImageView.animate()
+                
+                rightCloudSpringImageView.animation = "fadeOut"
+                rightCloudSpringImageView.duration = 0.5
+                rightCloudSpringImageView.animate()
+            }
+            
+            if count > 2 {
+                centerCloudSpringImage.animation = "fadeOut"
+                centerCloudSpringImage.duration = 0.5
+                centerCloudSpringImage.animate()
+                
+                greySpringView.animation = "fadeOut"
+                greySpringView.duration = 0.5
+                greySpringView.animate()
+            }
+            
+            if count == 5 {
+                lightningBoltSpringImageView.animation = "fadeOut"
+                lightningBoltSpringImageView.duration = 0.5
+                lightningBoltSpringImageView.animate()
+            }
+            
             sunSpringImageView.animation = "fall"
             sunSpringImageView.curve = "spring"
             sunSpringImageView.duration = 1
             sunSpringImageView.animate()
-            
-            moodSpringImageView.alpha = 0
-            
+
         } else if (sender.state == UIGestureRecognizerState.Began) {
             print("Long Press Began")
             count = 0
@@ -133,47 +174,186 @@ class UpdateViewController: UIViewController {
         count = (count + 1)%6
         print(count)
         if count == 5 {
-            self.longPressLabel.text = "Thunderstorm"
-            self.moodImageView.image = UIImage(named: "angry-face")
-            longPressSpringLabel.animation = "fadeInUp"
-            longPressSpringLabel.duration = 0.5
-            longPressSpringLabel.animate()
+            thunderstorm()
             
         } else if count == 4 {
-            self.longPressLabel.text = "Raining"
-            self.moodImageView.image = UIImage(named: "crying-face")
-            longPressSpringLabel.animation = "fadeInUp"
-            longPressSpringLabel.duration = 0.5
-            longPressSpringLabel.animate()
+            raining()
             
         } else if count == 3 {
-            self.longPressLabel.text = "Cloudy"
-            self.moodImageView.image = UIImage(named: "sad-face")
-            longPressSpringLabel.animation = "fadeInUp"
-            longPressSpringLabel.duration = 0.5
-            longPressSpringLabel.animate()
+            cloudy()
             
         } else if count == 2 {
-            self.longPressLabel.text = "Partly Cloudy"
-            self.moodImageView.image = UIImage(named: "smiley-face")
-            longPressSpringLabel.animation = "fadeInUp"
-            longPressSpringLabel.duration = 0.5
-            longPressSpringLabel.animate()
+            partlyCloudy()
             
         } else if count == 1 {
-            self.longPressLabel.text = "Sunny"
-            self.moodImageView.image = UIImage(named: "happy-face")
-            longPressSpringLabel.animation = "fadeInUp"
-            longPressSpringLabel.duration = 0.5
-            longPressSpringLabel.animate()
+            sunny()
             
         } else if count == 0 {
             self.moodImageView.image = nil
             
+            leftRainSpringImagView.alpha = 0
+            centerRainSpringImageView.alpha = 0
+            rightRainSpringImageView.alpha = 0
+            
+            sunSpringImageView.hidden = false
+            sunSpringImageView.animation = "squeezeDown"
+            sunSpringImageView.curve = "spring"
+            sunSpringImageView.duration = 2
+            sunSpringImageView.animate()
+            
+            if greySpringView.hidden == false {
+                greySpringView.animation = "fadeOut"
+                greySpringView.curve = "easeIn"
+                greySpringView.duration = 0.5
+                greySpringView.delay = 0
+                greySpringView.animate()
+            }
+            
+            longPressSpringLabel.animation = "fadeOut"
+            longPressSpringLabel.duration = 0.5
+            longPressSpringLabel.animate()
+            
+            leftCloudSpringImageView.animation = "fadeOut"
+            leftCloudSpringImageView.duration = 0.5
+            leftCloudSpringImageView.animate()
+            
+            centerCloudSpringImage.animation = "fadeOut"
+            centerCloudSpringImage.duration = 0.5
+            centerCloudSpringImage.animate()
+            
+            rightCloudSpringImageView.animation = "fadeOut"
+            rightCloudSpringImageView.duration = 0.5
+            rightCloudSpringImageView.animate()
+            
+            lightningBoltSpringImageView.animation = "fadeOut"
+            lightningBoltSpringImageView.duration = 0.5
+            lightningBoltSpringImageView.animate()
+            
         }
         
         moodSpringImageView.animation = "morph"
+        moodSpringImageView.duration = 0.8
         moodSpringImageView.animate()
+    }
+    
+    func sunny() {
+        greySpringView.hidden = true
+        
+        moodImageView.image = UIImage(named: "happy-face")
+        
+        longPressLabel.text = "Sunny"
+        longPressSpringLabel.animation = "fadeInUp"
+        longPressSpringLabel.duration = 0.4
+        longPressSpringLabel.animate()
+    }
+    
+    func partlyCloudy() {
+        leftCloudSpringImageView.animation = "squeezeRight"
+        leftCloudSpringImageView.curve = "easeInOutBack"
+        leftCloudSpringImageView.duration = 1.2
+        leftCloudSpringImageView.velocity = 0.5
+        leftCloudSpringImageView.animate()
+        
+        rightCloudSpringImageView.animation = "squeezeLeft"
+        rightCloudSpringImageView.curve = "easeInOutBack"
+        rightCloudSpringImageView.duration = 1.2
+        rightCloudSpringImageView.velocity = 0.5
+        rightCloudSpringImageView.animate()
+        
+        moodImageView.image = UIImage(named: "smiley-face")
+        
+        longPressLabel.text = "Partly Cloudy"
+        longPressSpringLabel.animation = "fadeInUp"
+        longPressSpringLabel.duration = 0.4
+        longPressSpringLabel.animate()
+    }
+    
+    func cloudy() {
+        greySpringView.hidden = false
+        greySpringView.animation = "fadeIn"
+        greySpringView.curve = "linear"
+        greySpringView.duration = 4
+        greySpringView.delay = 1
+        greySpringView.animate()
+        
+        centerCloudSpringImage.alpha = 1
+        centerCloudSpringImage.animation = "squeezeDown"
+        centerCloudSpringImage.curve = "easeInOutBack"
+        centerCloudSpringImage.duration = 1.2
+        centerCloudSpringImage.velocity = 0.5
+        centerCloudSpringImage.animate()
+        
+        moodImageView.image = UIImage(named: "sad-face")
+        
+        longPressLabel.text = "Cloudy"
+        longPressSpringLabel.animation = "fadeInUp"
+        longPressSpringLabel.duration = 0.4
+        longPressSpringLabel.animate()
+        
+        sunSpringImageView.animation = "fadeOut"
+        sunSpringImageView.curve = "linear"
+        sunSpringImageView.duration = 1
+        sunSpringImageView.animate()
+    }
+    
+    func raining() {
+        leftRainSpringImagView.alpha = 1
+        leftRainSpringImagView.animation = "fadeIn"
+        leftRainSpringImagView.curve = "easeIn"
+        leftRainSpringImagView.duration = 0.7
+        leftRainSpringImagView.animateNext { () -> () in
+            self.leftRainSpringImagView.animation = "fall"
+            self.leftRainSpringImagView.duration = 5
+            self.leftRainSpringImagView.animate()
+        }
+        
+        centerRainSpringImageView.alpha = 1
+        centerRainSpringImageView.animation = "fadeIn"
+        centerRainSpringImageView.curve = "easeIn"
+        centerRainSpringImageView.duration = 0.9
+        centerRainSpringImageView.animateNext { () -> () in
+            self.centerRainSpringImageView.animation = "fall"
+            self.centerRainSpringImageView.duration = 5
+            self.centerRainSpringImageView.animate()
+        }
+        
+        rightRainSpringImageView.alpha = 1
+        rightRainSpringImageView.animation = "fadeIn"
+        rightRainSpringImageView.curve = "easeIn"
+        rightRainSpringImageView.duration = 0.5
+        rightRainSpringImageView.animateNext { () -> () in
+            self.rightRainSpringImageView.animation = "fall"
+            self.rightRainSpringImageView.duration = 3
+            self.rightRainSpringImageView.animate()
+        }
+        
+        moodImageView.image = UIImage(named: "crying-face")
+        
+        longPressLabel.text = "Raining"
+        longPressSpringLabel.animation = "fadeInUp"
+        longPressSpringLabel.duration = 0.4
+        longPressSpringLabel.animate()
+    }
+    
+    func thunderstorm() {
+        lightningBoltSpringImageView.alpha = 1
+        lightningBoltSpringImageView.animation = "fadeIn"
+        lightningBoltSpringImageView.curve = "spring"
+        lightningBoltSpringImageView.duration = 0.5
+        // lightningBoltSpringImageView.repeatCount = 2
+        lightningBoltSpringImageView.animateToNext({ () -> () in
+            self.lightningBoltSpringImageView.animation = "wobble"
+            self.lightningBoltSpringImageView.curve = "spring"
+            self.lightningBoltSpringImageView.duration = 0.5
+            self.lightningBoltSpringImageView.animate()
+        })
+        
+        moodImageView.image = UIImage(named: "angry-face")
+        
+        longPressLabel.text = "Thunderstorm"
+        longPressSpringLabel.animation = "fadeInUp"
+        longPressSpringLabel.duration = 0.4
+        longPressSpringLabel.animate()
     }
     
 }
