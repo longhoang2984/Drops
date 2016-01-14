@@ -62,10 +62,11 @@ class MessagesViewController: UIViewController {
                             
                             let author = messageObject["author"] as! PFObject
                             print(author)
-                        
+                            
                             let frame = self.randomFrame()
                             let color = self.randomColor()
-                            let newDrop = self.addDrop(frame, color: color)
+                            let newDrop = self.addDrop(frame, color: color,message: messageObject)
+                            self.view.addSubview(newDrop)
                         }
                         
                         print(self.messages)
@@ -77,8 +78,59 @@ class MessagesViewController: UIViewController {
             })
             
         }
-
+        
     }
+    
+    // need to make drops round
+    var listMessage:[String] = []
+    func addDrop(location: CGRect, color: UIColor,message: PFObject) -> UIView {
+        let addDrop = UIView(frame: location)
+        let imageUser = UIImageView()
+        let user = message["author"] as! PFUser
+        let imageData = user["profileImageFile"] as! PFFile
+        imageData.getDataInBackgroundWithBlock {
+            (imageData: NSData?, error: NSError?) -> Void in
+            if error == nil {
+                addDrop.layer.cornerRadius = 25.0
+                addDrop.layer.borderWidth = 0.0
+                addDrop.clipsToBounds = true
+                addDrop.backgroundColor = color
+                
+                if let imageData = imageData {
+                    // Add image load from Parse to UIImageView
+                    imageUser.image = UIImage(data:imageData)
+                    // Create UIImageView with position and size
+                    imageUser.frame = CGRectMake(0, 0, addDrop.frame.size.width, addDrop.frame.size.height)
+                    print(imageUser.image)
+                    // Create new thread to load image
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        imageUser.contentMode = UIViewContentMode.ScaleToFill
+                        
+                        
+                        // Create tap gesture addDrop.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapDrop:")))
+                        //                        view.addSubview(addDrop)
+                        self.addDropToBehaviors(addDrop)
+                        self.drops.append(addDrop)
+                        addDrop.addSubview(imageUser)
+                        // Add position of message
+                        addDrop.tag = self.drops.count
+                        self.listMessage.append(message["messageText"] as! (String))
+                    })
+                }
+            }
+        }
+        return addDrop
+    }
+    
+    func tapDrop(sender:UITapGestureRecognizer){
+        let index = sender.view?.tag
+        let textMessage = listMessage[index! - 1]
+        let alert:UIAlertController = UIAlertController(title: "Message", message: textMessage, preferredStyle: .Alert)
+        let btnOk:UIAlertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+        alert.addAction(btnOk)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+
     
     // random color for drop. need to replace random color with mseeage author profile pic
     func randomColor() -> UIColor {
