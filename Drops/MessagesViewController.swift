@@ -107,7 +107,8 @@ class MessagesViewController: UIViewController {
                         imageUser.contentMode = UIViewContentMode.ScaleToFill
                         
                         
-                        // Create tap gesture addDrop.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapDrop:")))
+                        // Create tap gesture 
+                        addDrop.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapDrop:")))
                         //                        view.addSubview(addDrop)
                         self.addDropToBehaviors(addDrop)
                         self.drops.append(addDrop)
